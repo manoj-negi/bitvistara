@@ -1,0 +1,147 @@
+{{define "content"}}
+<div class="max-w-4xl mx-auto">
+  <div class="text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Linux Basics: Common Commands</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400">Quick reference for frequently used Linux CLI commands.</p>
+  </div>
+
+  <article class="prose dark:prose-invert max-w-none">
+    <h2>Navigation</h2>
+    <pre><code>$ pwd            # print working directory
+$ ls             # list files
+$ ls -la         # detailed list incl. hidden
+$ cd /path/to    # change directory
+</code></pre>
+
+    <h2>Files and Directories</h2>
+    <pre><code>$ touch file.txt        # create file
+$ mkdir mydir           # create directory
+$ cp src dst            # copy file
+$ mv old new            # move/rename
+$ rm file.txt           # remove file
+$ rm -r mydir           # remove directory recursively
+</code></pre>
+
+    <h2>Viewing Content</h2>
+    <pre><code>$ cat file.txt          # print file
+$ less file.txt         # paged view (q to quit)
+$ head -n 20 file.txt   # first 20 lines
+$ tail -f app.log       # follow log
+</code></pre>
+
+    <h2>Search</h2>
+    <pre><code>$ grep -R "pattern" .        # recursive search
+$ grep -Rni "error" logs/     # case-insensitive with line numbers
+$ find . -name "*.go"         # find files by name
+</code></pre>
+
+    <h2>Permissions</h2>
+    <pre><code>$ chmod +x script.sh     # make executable
+$ chown user:group file  # change owner
+$ sudo command           # run as root
+</code></pre>
+
+    <h2>Networking</h2>
+    <pre><code>$ curl -I https://example.com  # http headers
+$ ping -c 4 8.8.8.8            # ping 4 times
+$ ss -tulpn                    # listening sockets
+</code></pre>
+
+    <h2>System</h2>
+    <pre><code>$ uname -a          # kernel/system info
+$ df -h             # disk usage
+$ free -h           # memory
+$ top               # processes (q to quit)
+</code></pre>
+
+    <h2>Processes and Ports</h2>
+    <pre><code>$ sudo kill -9 $(sudo lsof -t -i :3000)  # kill process using port 3000
+$ sudo fuser -k 3000/tcp                 # kill by port via fuser
+</code></pre>
+
+    <h2>Ubuntu Package Management (APT)</h2>
+    <pre><code>$ sudo apt update                          # refresh package indexes
+$ sudo apt upgrade -y                      # upgrade installed packages
+$ sudo apt install nginx -y                # install package
+$ sudo apt remove PACKAGE -y               # remove package
+$ apt list --installed | grep PACKAGE      # find installed package
+</code></pre>
+
+    <h2>Services (systemd)</h2>
+    <pre><code>$ sudo systemctl status nginx              # service status
+$ sudo systemctl start nginx               # start service
+$ sudo systemctl stop nginx                # stop service
+$ sudo systemctl restart nginx             # restart service
+$ sudo systemctl enable nginx              # start on boot
+$ sudo journalctl -u nginx -f              # follow service logs
+</code></pre>
+
+    <h2>Firewall (UFW)</h2>
+    <pre><code>$ sudo ufw status                          # firewall status
+$ sudo ufw allow 22/tcp                    # allow SSH
+$ sudo ufw allow 80,443/tcp                # allow HTTP/HTTPS
+$ sudo ufw delete allow 3000/tcp           # remove rule
+$ sudo ufw enable                          # enable firewall
+</code></pre>
+
+    <h2>Users and Permissions</h2>
+    <pre><code>$ sudo adduser deploy                      # create user
+$ sudo usermod -aG sudo deploy             # add to sudo group
+$ sudo chown -R $USER:$USER /var/www/app   # change ownership
+$ sudo chmod -R 755 /var/www/app           # set permissions
+</code></pre>
+
+    <h2>Git Basics</h2>
+    <pre><code>$ git clone https://github.com/org/repo.git  # clone repo
+$ git checkout -b feature/branch             # new branch
+$ git add . && git commit -m "msg"          # stage + commit
+$ git push -u origin feature/branch          # push branch
+</code></pre>
+
+    <h2>Node.js and npm</h2>
+    <pre><code>$ node -v && npm -v                         # verify versions
+$ npm init -y                               # init project
+$ npm install                               # install deps from package.json
+$ npm run build                             # run build script
+$ npx serve -s build                        # serve static build
+</code></pre>
+
+    <h2>Python and pip</h2>
+    <pre><code>$ python3 -V && pip3 -V                     # verify versions
+$ python3 -m venv .venv                     # create virtual env
+$ source .venv/bin/activate                 # activate
+$ pip install -r requirements.txt           # install deps
+</code></pre>
+
+    <h2>Nginx Reverse Proxy (basic)</h2>
+    <pre><code># /etc/nginx/sites-available/app
+server {
+    listen 80;
+    server_name example.com;
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+
+$ sudo ln -s /etc/nginx/sites-available/app /etc/nginx/sites-enabled/
+$ sudo nginx -t && sudo systemctl reload nginx
+</code></pre>
+
+    <h2>Let's Encrypt (Certbot) for Nginx</h2>
+    <pre><code>$ sudo apt install certbot python3-certbot-nginx -y
+$ sudo certbot --nginx -d example.com -d www.example.com
+$ sudo systemctl status certbot.timer   # auto-renew timer
+</code></pre>
+
+    <h2>Docker Basics</h2>
+    <pre><code>$ docker ps                                  # running containers
+$ docker compose up -d                       # start services (compose)
+$ docker logs -f SERVICE                     # follow logs
+$ docker exec -it CONTAINER bash             # enter container
+</code></pre>
+  </article>
+</div>
+{{end}}
+

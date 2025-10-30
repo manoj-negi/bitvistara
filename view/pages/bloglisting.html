@@ -1,0 +1,214 @@
+{{define "content"}}
+<div class="max-w-4xl mx-auto">
+  <div class="text-center mb-12">
+    <h1
+      class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+    >
+      Our Blog
+    </h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400">
+      Stay up-to-date with the latest insights and trends in web and server
+      solutions.
+    </p>
+  </div>
+  <div class="mb-8">
+    <div class="relative">
+      <div
+        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+      >
+        <svg
+          aria-hidden="true"
+          class="h-5 w-5 text-gray-400 dark:text-gray-500"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+            fill-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+      <input
+        class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg leading-5 bg-background-light dark:bg-background-dark placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:placeholder-gray-400 dark:focus:placeholder-gray-500 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
+        id="search"
+        name="search"
+        placeholder="Search blog posts..."
+        type="search"
+      />
+    </div>
+  </div>
+  <div class="flex flex-wrap justify-center gap-2 mb-12">
+    <button
+      class="px-4 py-2 text-sm font-medium rounded-full bg-primary text-white"
+    >
+      All
+    </button>
+    <button
+      class="px-4 py-2 text-sm font-medium rounded-full bg-primary/10 dark:bg-primary/20 text-gray-800 dark:text-gray-300 hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors"
+    >
+      Web Development
+    </button>
+    <button
+      class="px-4 py-2 text-sm font-medium rounded-full bg-primary/10 dark:bg-primary/20 text-gray-800 dark:text-gray-300 hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors"
+    >
+      Server Management
+    </button>
+    <button
+      class="px-4 py-2 text-sm font-medium rounded-full bg-primary/10 dark:bg-primary/20 text-gray-800 dark:text-gray-300 hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors"
+    >
+      Training
+    </button>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div
+      class="group flex flex-col bg-background-light dark:bg-background-dark rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:border-primary/30 dark:hover:border-primary/40 transition-all duration-300"
+    >
+      <div
+        class="w-full h-48 bg-cover bg-center"
+        style="
+          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9gT3l_P6OPGNebr0zH_pFPzUpPw5L2-rrd6O2v9hmGPGWsvBvi6D26LhFXrr__jLNpG_cuyCflbfSMR3uGdZPpgHWp0SZdClJmpDrmLRI37MnT3l63TEKCG33SudmzTVR-Soo-jDguabIDnN9dpIvkK_37XSrExewtjtaMJNCrwzpw6MAAjEc7EaDa29arzYBhATzW1KYziXOMJdhvyCmZykMw5BD_DjGT5f4Y_nbNTxFFWtfWmHvziVHYSA-AAZlb-rRRCmnh4wX');
+        "
+      ></div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          Mastering Modern Web Development Techniques
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+          Explore the latest trends and techniques in web development to create
+          stunning and functional websites.
+        </p>
+        <a class="font-medium text-primary hover:underline self-start" href="#"
+          >Read More →</a
+        >
+      </div>
+    </div>
+    <div
+      class="group flex flex-col bg-background-light dark:bg-background-dark rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:border-primary/30 dark:hover:border-primary/40 transition-all duration-300"
+    >
+      <div
+        class="w-full h-48 bg-cover bg-center"
+        style="
+          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWbbklV4McNHX98QPACFQCIb_F7VbDWqIdoNxxaO_5BWDVRWuyqMSxwt0bpXcHpWwFkXcgu_22PozCLt15B-F6tkC-q1aQkxvFQnTq95kKCSMOARMXY1fbt9F0BsGJW5qhBEI51VIszQUJAel4HjX2l5KsgDE9D3haqEork2l8rH8kMyjdMgUl_y4QWP_y4hjbNmZIAsiwzuNT1M62ZOV9NaXA1cMLHVKi8UpkxgbZJLIsjoE75GsdwIBVhpXgb7oNfMMe3H6Z67wh');
+        "
+      ></div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          Optimizing Server Performance for Peak Efficiency
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+          Learn how to optimize your server performance to ensure your
+          applications run smoothly and efficiently.
+        </p>
+        <a class="font-medium text-primary hover:underline self-start" href="#"
+          >Read More →</a
+        >
+      </div>
+    </div>
+    <div
+      class="group flex flex-col bg-background-light dark:bg-background-dark rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:border-primary/30 dark:hover:border-primary/40 transition-all duration-300"
+    >
+      <div
+        class="w-full h-48 bg-cover bg-center"
+        style="
+          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtzWe0Q1RWNpgk0TFH3YvKbBlB1rxs72c8iE3TUjjdYYvM3NRvZjKnKeqBjwHGbvy0UmlDukrjo3T_7RFt9JGl8lbAjND9q8AY5oIhDwA9D3Kjkz60oCox-7JPZvyweoVIqGoHffhVY4K8CQTVoe4Tn3EEigmQCwJd-BEpAxeEbHHGsghQSz_Xqcc_T_oOA_m3gbQh68tiwICfJ0VieNif-6sRS8Uox8yY0NEr2b83BVxEko298X7qHohzTQV9W4JsA6XEzmL61uFI');
+        "
+      ></div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          Advanced Training Modules for IT Professionals
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+          Enhance your IT skills with our advanced training modules designed for
+          professionals.
+        </p>
+        <a class="font-medium text-primary hover:underline self-start" href="#"
+          >Read More →</a
+        >
+      </div>
+    </div>
+    <div
+      class="group flex flex-col bg-background-light dark:bg-background-dark rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:border-primary/30 dark:hover:border-primary/40 transition-all duration-300"
+    >
+      <div
+        class="w-full h-48 bg-cover bg-center"
+        style="
+          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBV4Wc67dvOKw27NDdJ4iVYQVbjg5aqBWiyxL5DMgZuCruvXGGBxgOz9kxvmr0zFQ9vmcdMzp-07WxiyE4G2W7HrdS21rT41nDKFKR7WsQsegy76UPA-Zh5EBKGZqQkhcTUsBwIqutrNPDDwtuwN2b6TOySzGHcj9v1lm2_TDNYmhj6OQfU3zfiebJwW7sI7Pxl1r8y8We0xaW92GFkLtYA0wZ6P2CwtbRXA88oEO_YVX6eKf9F8rVO1TF9-K24ZGMbrlc-88vvnp8y');
+        "
+      ></div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          The Future of Cloud Computing and its Impact
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+          Discover the future of cloud computing and its impact on businesses
+          and technology.
+        </p>
+        <a class="font-medium text-primary hover:underline self-start" href="#"
+          >Read More →</a
+        >
+      </div>
+    </div>
+  </div>
+  <nav class="flex items-center justify-center space-x-2 mt-12">
+    <a
+      class="flex items-center justify-center h-10 w-10 rounded-full text-gray-500 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20"
+      href="#"
+    >
+      <svg
+        aria-hidden="true"
+        class="h-5 w-5"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+          fill-rule="evenodd"
+        ></path>
+      </svg>
+    </a>
+    <a
+      class="flex items-center justify-center h-10 w-10 rounded-full text-sm font-medium bg-primary text-white"
+      href="#"
+      >1</a
+    >
+    <a
+      class="flex items-center justify-center h-10 w-10 rounded-full text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20"
+      href="#"
+      >2</a
+    >
+    <a
+      class="flex items-center justify-center h-10 w-10 rounded-full text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20"
+      href="#"
+      >3</a
+    >
+    <span class="text-gray-500 dark:text-gray-400">...</span>
+    <a
+      class="flex items-center justify-center h-10 w-10 rounded-full text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20"
+      href="#"
+      >8</a
+    >
+    <a
+      class="flex items-center justify-center h-10 w-10 rounded-full text-gray-500 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20"
+      href="#"
+    >
+      <svg
+        aria-hidden="true"
+        class="h-5 w-5"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+          fill-rule="evenodd"
+        ></path>
+      </svg>
+    </a>
+  </nav>
+</div>
+{{end}}

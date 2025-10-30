@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -26,15 +27,33 @@ func render(w http.ResponseWriter, filename string, data any) {
 		return
 	}
 
-	// Parse and execute as a single-file template from view/
+	// If the template path is under pages/, render with base layout
 	fullPath := filepath.Join("view", clean)
+	if strings.HasPrefix(clean, "pages/") {
+		base := filepath.Join("view", "layout", "base.html")
+		if _, err := os.Stat(fullPath); err == nil {
+			tmpl, err := template.ParseFiles(base, fullPath)
+			if err != nil {
+				log.Printf("template parse error for %s: %v", fullPath, err)
+				http.Error(w, "template error", http.StatusInternalServerError)
+				return
+			}
+			if err := tmpl.ExecuteTemplate(w, "base", data); err != nil {
+				log.Printf("template execute error for %s: %v", fullPath, err)
+				http.Error(w, "render error", http.StatusInternalServerError)
+				return
+			}
+			return
+		}
+	}
+
+	// Fallback: render standalone file under view/
 	tmpl, err := template.ParseFiles(fullPath)
 	if err != nil {
 		log.Printf("template parse error for %s: %v", fullPath, err)
 		http.Error(w, "template error", http.StatusInternalServerError)
 		return
 	}
-
 	if err := tmpl.Execute(w, data); err != nil {
 		log.Printf("template execute error for %s: %v", fullPath, err)
 		http.Error(w, "render error", http.StatusInternalServerError)
@@ -51,23 +70,23 @@ func main() {
 
 	// Routes mapping to existing HTML files
 	r.HandleFunc("/", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "index.html", nil)
+		render(w, "pages/index.html", nil)
 	})
 
 	r.HandleFunc("/about-us", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "about-us.html", nil)
+		render(w, "pages/about-us.html", nil)
 	})
 
 	r.HandleFunc("/services", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "our-services.html", nil)
+		render(w, "pages/our-services.html", nil)
 	})
 
 	r.HandleFunc("/training", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "training.html", nil)
+		render(w, "pages/training.html", nil)
 	})
 
 	r.HandleFunc("/blog", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "bloglisting.html", nil)
+		render(w, "pages/bloglisting.html", nil)
 	})
 
 	// Example dynamic detail route using same template (you can personalize later)
@@ -76,16 +95,21 @@ func main() {
 		data := map[string]any{
 			"Slug": vars["slug"],
 		}
-		render(w, "blogDetails.html", data)
+		render(w, "pages/blogDetails.html", data)
 	})
 
 	r.HandleFunc("/contact", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "contact_us.html", nil)
+		render(w, "pages/contact_us.html", nil)
+	})
+
+	// Linux commands reference page (uses layout)
+	r.HandleFunc("/linux-commands", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/linux-commands.html", nil)
 	})
 
 	// Optional: if you want to expose server.html on /server
 	r.HandleFunc("/server", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "server.html", nil)
+		render(w, "pages/server.html", nil)
 	})
 
 	srv := &http.Server{
