@@ -98,6 +98,13 @@ $ git add . && git commit -m "msg"          # stage + commit
 $ git push -u origin feature/branch          # push branch
 </code></pre>
 
+    <h2>SSH Keys</h2>
+    <pre><code>$ ssh-keygen -t ed25519 -C "your_email@example.com"   # generate key
+$ eval "$(ssh-agent -s)"                               # start agent
+$ ssh-add ~/.ssh/id_ed25519                             # add key to agent
+$ ssh-copy-id user@server                               # copy pub key to server
+</code></pre>
+
     <h2>Node.js and npm</h2>
     <pre><code>$ node -v && npm -v                         # verify versions
 $ npm init -y                               # init project
