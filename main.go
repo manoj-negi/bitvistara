@@ -64,6 +64,9 @@ func render(w http.ResponseWriter, filename string, data any) {
 func main() {
 	r := mux.NewRouter()
 
+	// Basic Auth middleware (applies to all routes)
+	r.Use(authMiddleware)
+
 	// Static files under /public/
 	fileServer := http.FileServer(http.Dir("public"))
 	r.PathPrefix("/public/").Handler(http.StripPrefix("/public/", fileServer))
@@ -121,4 +124,27 @@ func main() {
 	if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		log.Fatal(err)
 	}
+}
+
+// authMiddleware enforces HTTP Basic authentication on all requests.
+// Configure credentials via env: BASIC_USER, BASIC_PASS. Defaults to admin/admin.
+func authMiddleware(next http.Handler) http.Handler {
+	expectedUser := os.Getenv("BASIC_USER")
+	if expectedUser == "" {
+		expectedUser = "admin"
+	}
+	expectedPass := os.Getenv("BASIC_PASS")
+	if expectedPass == "" {
+		expectedPass = "0987654321"
+	}
+
+	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		user, pass, ok := req.BasicAuth()
+		if !ok || user != expectedUser || pass != expectedPass {
+			w.Header().Set("WWW-Authenticate", "Basic realm=Restricted")
+			http.Error(w, http.StatusText(http.StatusUnauthorized), http.StatusUnauthorized)
+			return
+		}
+		next.ServeHTTP(w, req)
+	})
 }
