@@ -73,7 +73,8 @@ func main() {
 
 	// Routes mapping to existing HTML files
 	r.HandleFunc("/", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "pages/index.html", nil)
+		render(w, "under-development.html", nil)
+		//render(w, "pages/index.html", nil)
 	})
 
 	r.HandleFunc("/about-us", func(w http.ResponseWriter, _ *http.Request) {
