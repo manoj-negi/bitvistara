@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Site Under Development</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ec1313",
+              "background-light": "#f8f6f6",
+              "background-dark": "#221010",
+              "foreground-light": "#1c1917",
+              "foreground-dark": "#e7e5e4",
+            },
+            fontFamily: { display: ["Newsreader", "serif"] },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-background-light to-white dark:from-background-dark dark:to-black text-foreground-light dark:text-foreground-dark flex items-center justify-center p-6">
+    <div class="max-w-xl w-full text-center">
+      <div class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-white text-xl font-black shadow-lg mb-6">BV</div>
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight">We're building something great</h1>
+      <p class="mt-4 text-lg text-foreground-light/70 dark:text-foreground-dark/70">
+        This site is currently under development. Please check back soon.
+      </p>
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <span class="inline-flex h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+        <span class="inline-flex h-2 w-2 animate-pulse rounded-full bg-primary/70 delay-150"></span>
+        <span class="inline-flex h-2 w-2 animate-pulse rounded-full bg-primary/50 delay-300"></span>
+      </div>
+      <div class="mt-10">
+        <a href="mailto:admin@BitVistara.com" class="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-white font-bold shadow-md hover:bg-primary/90 transition-colors">Email us: admin@BitVistara.com</a>
+      </div>
+    </div>
+  </body>
+  </html>
+
+

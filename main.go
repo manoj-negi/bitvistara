@@ -115,6 +115,11 @@ func main() {
 		render(w, "pages/server.html", nil)
 	})
 
+	// Under development page (standalone, no layout)
+	r.HandleFunc("/under-development", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "under-development.html", nil)
+	})
+
 	srv := &http.Server{
 		Addr:    ":9090",
 		Handler: r,
