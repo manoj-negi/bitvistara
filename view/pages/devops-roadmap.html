@@ -1,0 +1,60 @@
+{{define "content"}}
+<div class="max-w-4xl mx-auto">
+  <div class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight">DevOps Roadmap</h1>
+    <p class="mt-3 text-lg text-foreground-muted-light dark:text-foreground-muted-dark">Core skills and tools across the SDLC and operations.</p>
+  </div>
+
+  <ol class="space-y-8">
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">1) OS, Networking, Git</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>Linux essentials, permissions, processes, systemd.</li>
+        <li>Networking: TCP/UDP, DNS, HTTP, TLS, firewalls (ufw/iptables).</li>
+        <li>Git: branching, PRs, code review, semantic versioning.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">2) CI/CD</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>Build pipelines (GitHub Actions, GitLab CI, Jenkins).</li>
+        <li>Artifact management (Docker registry, packages).</li>
+        <li>Release strategies: blue/green, canary, feature flags.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">3) Containers & Orchestration</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>Docker: images, layers, multi-stage builds, Compose.</li>
+        <li>Kubernetes: core resources, Services/Ingress, Helm/Kustomize.</li>
+        <li>Security: image scanning, secrets, policies.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">4) IaC & Cloud</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>Terraform (state, modules), Ansible (idempotence), Packer.</li>
+        <li>Cloud fundamentals (AWS/Azure/GCP): compute, network, storage.</li>
+        <li>Cost awareness, tagging, IAM and least privilege.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">5) Observability & SRE</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>Logging, metrics, tracing (ELK/EFK, Prometheus/Grafana, OTel).</li>
+        <li>SLIs/SLOs, error budgets, incident response & postmortems.</li>
+        <li>Chaos engineering, capacity planning.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="mt-10 rounded-xl bg-primary/10 dark:bg-primary/20 p-6 text-center">
+    <p class="text-base font-medium">Automate everything you repeat twice. Document, version, and observe every change.</p>
+  </div>
+</div>
+{{end}}
+

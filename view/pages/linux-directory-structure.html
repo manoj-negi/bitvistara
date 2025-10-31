@@ -1,0 +1,162 @@
+{{define "content"}}
+<div class="max-w-5xl mx-auto">
+  <div class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight">Linux Directory Architecture</h1>
+    <p class="mt-3 text-lg text-foreground-muted-light dark:text-foreground-muted-dark">Filesystem Hierarchy Standard (FHS) overview</p>
+  </div>
+
+  <div class="mb-6 prose dark:prose-invert max-w-none">
+    <p class="text-base text-foreground-light/80 dark:text-foreground-dark/80">
+      Linux follows the Filesystem Hierarchy Standard (FHS), which defines the structure and purpose of directories. This standardization ensures consistency across distributions and helps both users and developers understand where files belong. Every directory has a specific purpose, from storing essential system binaries to user data and configuration files.
+    </p>
+  </div>
+
+  <div class="bg-background-light dark:bg-background-dark rounded-xl border border-border-light dark:border-border-dark p-6 mb-8">
+    <div class="font-mono text-sm space-y-1">
+      <div class="flex items-center gap-2 text-primary font-bold">
+        <span>/</span>
+        <span class="text-foreground-light dark:text-foreground-dark">(root filesystem)</span>
+      </div>
+      
+      <div class="ml-4 space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/bin</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Essential binaries</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/boot</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Boot files, kernel</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/dev</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Device files</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/etc</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Configuration files</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/home</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">User home directories</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/lib</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Shared libraries</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/media</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Removable media</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/mnt</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Mount points</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/opt</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Optional software</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/proc</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Process info (virtual)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/root</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Root user home</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/run</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Runtime data</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/sbin</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">System binaries</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/srv</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Service data</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/sys</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">System info (virtual)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/tmp</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Temporary files</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/usr</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">User programs</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">└──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">/var</span>
+          <span class="text-sm text-foreground-muted-light dark:text-foreground-muted-dark">Variable data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-6 prose dark:prose-invert max-w-none">
+    <p class="text-base text-foreground-light/80 dark:text-foreground-dark/80">
+      Understanding this structure is crucial for system administration. For example, system binaries are typically in <span class="font-mono text-primary">/bin</span> or <span class="font-mono text-primary">/usr/bin</span>, while configuration files that control system behavior are located in <span class="font-mono text-primary">/etc</span>. User files and applications often reside in <span class="font-mono text-primary">/home</span>, while log files and other variable data are stored in <span class="font-mono text-primary">/var</span>.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="rounded-xl border border-border-light dark:border-border-dark p-6 bg-background-light/50 dark:bg-background-dark/50">
+      <h3 class="text-xl font-bold mb-3">Key Directories</h3>
+      <ul class="space-y-2 text-sm">
+        <li><span class="font-mono font-semibold text-primary">/etc</span> — System-wide config</li>
+        <li><span class="font-mono font-semibold text-primary">/var/log</span> — Log files</li>
+        <li><span class="font-mono font-semibold text-primary">/usr/bin</span> — User binaries</li>
+        <li><span class="font-mono font-semibold text-primary">/opt</span> — Third-party software</li>
+        <li><span class="font-mono font-semibold text-primary">/tmp</span> — Temporary (cleared on reboot)</li>
+      </ul>
+    </div>
+
+    <div class="rounded-xl border border-border-light dark:border-border-dark p-6 bg-background-light/50 dark:bg-background-dark/50">
+      <h3 class="text-xl font-bold mb-3">Virtual Filesystems</h3>
+      <ul class="space-y-2 text-sm">
+        <li><span class="font-mono font-semibold text-primary">/proc</span> — Process & kernel info</li>
+        <li><span class="font-mono font-semibold text-primary">/sys</span> — Hardware & drivers</li>
+        <li><span class="font-mono font-semibold text-primary">/dev</span> — Device nodes</li>
+        <li><span class="font-mono font-semibold text-primary">/run</span> — Runtime state</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-6 mb-6 prose dark:prose-invert max-w-none">
+    <p class="text-base text-foreground-light/80 dark:text-foreground-dark/80">
+      Some directories like <span class="font-mono text-primary">/proc</span> and <span class="font-mono text-primary">/sys</span> are virtual filesystems that don't actually exist on disk. They provide interfaces to kernel and system information, allowing you to interact with the system through filesystem-like operations. It's important to follow FHS conventions to maintain system stability and ensure compatibility across different Linux distributions.
+    </p>
+  </div>
+
+  <div class="mt-8 rounded-xl bg-primary/10 dark:bg-primary/20 p-6">
+    <h3 class="text-lg font-bold mb-2">Best Practices</h3>
+    <ul class="list-disc list-inside space-y-1 text-sm">
+      <li>Never write to <span class="font-mono">/</span> or <span class="font-mono">/usr</span> directly</li>
+      <li>User data goes in <span class="font-mono">/home</span> or <span class="font-mono">/var</span></li>
+      <li>Configs belong in <span class="font-mono">/etc</span></li>
+      <li>Logs should be in <span class="font-mono">/var/log</span></li>
+    </ul>
+  </div>
+</div>
+{{end}}
+

@@ -73,8 +73,7 @@ func main() {
 
 	// Routes mapping to existing HTML files
 	r.HandleFunc("/", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "under-development.html", nil)
-		//render(w, "pages/index.html", nil)
+		render(w, "pages/index.html", nil)
 	})
 
 	r.HandleFunc("/about-us", func(w http.ResponseWriter, _ *http.Request) {
@@ -111,6 +110,16 @@ func main() {
 		render(w, "pages/linux-commands.html", nil)
 	})
 
+	// Linux directory structure page
+	r.HandleFunc("/linux-directory-structure", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/linux-directory-structure.html", nil)
+	})
+
+	// Linux permissions and user management page
+	r.HandleFunc("/linux-permissions", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/linux-permissions.html", nil)
+	})
+
 	// Optional: if you want to expose server.html on /server
 	r.HandleFunc("/server", func(w http.ResponseWriter, _ *http.Request) {
 		render(w, "pages/server.html", nil)
@@ -119,6 +128,17 @@ func main() {
 	// Under development page (standalone, no layout)
 	r.HandleFunc("/under-development", func(w http.ResponseWriter, _ *http.Request) {
 		render(w, "under-development.html", nil)
+	})
+
+	// Roadmaps
+	r.HandleFunc("/roadmap/golang", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/golang-roadmap.html", nil)
+	})
+	r.HandleFunc("/roadmap/devops", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/devops-roadmap.html", nil)
+	})
+	r.HandleFunc("/roadmap/project-manager", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/project-manager-roadmap.html", nil)
 	})
 
 	srv := &http.Server{

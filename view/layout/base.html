@@ -54,14 +54,32 @@
               </svg>
               
               
-              <h1 class="text-2xl font-bold">BitVistara</h1>
+              <a href="/" class="text-2xl font-bold hover:text-primary transition-colors">BitVistara</a>
             </div>
             <nav class="hidden md:flex items-center gap-8">
-              <a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="/">Services</a>
-              <a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="/">Solutions</a>
-              <a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="/">Training</a>
-              <a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="/">About Us</a>
-              <a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="/">Contact</a>
+              <a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="/services">Services</a>
+              <!--a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="#">Solutions</a-->
+              
+              <!-- Training Dropdown Menu -->
+              <div class="relative group">
+                <button class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors flex items-center gap-1">
+                  Training
+                  <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="absolute left-0 mt-2 w-56 bg-background-light dark:bg-background-dark rounded-lg shadow-lg border border-border-light dark:border-border-dark opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div class="py-2">
+                    <div class="px-4 py-2 text-xs font-semibold text-foreground-muted-light dark:text-foreground-muted-dark uppercase tracking-wider">Linux</div>
+                    <a href="/linux-commands" class="block px-4 py-2 pl-8 text-sm text-foreground-muted-light dark:text-foreground-muted-dark hover:bg-primary/10 hover:text-primary transition-colors">Commands</a>
+                    <a href="/linux-directory-structure" class="block px-4 py-2 pl-8 text-sm text-foreground-muted-light dark:text-foreground-muted-dark hover:bg-primary/10 hover:text-primary transition-colors">Directory Structure</a>
+                    <a href="/linux-permissions" class="block px-4 py-2 pl-8 text-sm text-foreground-muted-light dark:text-foreground-muted-dark hover:bg-primary/10 hover:text-primary transition-colors">Permissions</a>
+                  </div>
+                </div>
+              </div>
+              
+              <a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="/about-us">About Us</a>
+              <a class="text-sm font-medium text-foreground-muted-light dark:text-foreground-muted-dark hover:text-primary transition-colors" href="/contact">Contact</a>
             </nav>
             <button class="hidden md:flex items-center justify-center rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors">Get Started</button>
           </div>
@@ -75,9 +93,9 @@
       <footer class="bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark mt-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-foreground-muted-light dark:text-foreground-muted-dark">
           <div class="flex justify-center gap-6 mb-4">
-            <a class="text-sm hover:text-primary transition-colors" href="/">Privacy Policy</a>
-            <a class="text-sm hover:text-primary transition-colors" href="/">Terms of Service</a>
-            <a class="text-sm hover:text-primary transition-colors" href="/">Contact Us</a>
+            <a class="text-sm hover:text-primary transition-colors" href="/privacy-policy">Privacy Policy</a>
+            <a class="text-sm hover:text-primary transition-colors" href="/terms-of-service">Terms of Service</a>
+            <a class="text-sm hover:text-primary transition-colors" href="/contact">Contact Us</a>
           </div>
           <p class="text-sm">© 2025-2026 BitVistara. All rights reserved.</p>
         </div>

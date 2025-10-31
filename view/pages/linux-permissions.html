@@ -1,0 +1,161 @@
+{{define "content"}}
+<div class="max-w-5xl mx-auto">
+  <div class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight">Linux User Management & Permissions</h1>
+    <p class="mt-3 text-lg text-foreground-muted-light dark:text-foreground-muted-dark">Understanding users, groups, and file permissions for beginners</p>
+  </div>
+
+  <div class="mb-6 prose dark:prose-invert max-w-none">
+    <p class="text-base text-foreground-light/80 dark:text-foreground-dark/80">
+      Linux is a multi-user system where files and directories have permissions that control who can read, write, or execute them. Understanding these concepts is essential for system administration and security. Permissions are represented in two ways: symbolic notation (rwx) and numeric notation (like 755 or 777).
+    </p>
+  </div>
+
+  <div class="rounded-xl border border-border-light dark:border-border-dark p-6 mb-8 bg-background-light/50 dark:bg-background-dark/50">
+    <h2 class="text-2xl font-bold mb-4">Understanding rwx Permissions</h2>
+    <p class="mb-4 text-foreground-light/80 dark:text-foreground-dark/80">
+      Permissions are divided into three categories, each represented by three characters:
+    </p>
+    <div class="grid md:grid-cols-3 gap-4 mb-4">
+      <div class="border border-border-light dark:border-border-dark p-4 rounded-lg">
+        <h3 class="font-bold text-primary mb-2">Read (r)</h3>
+        <p class="text-sm">Permission to view or copy file contents. For directories, allows listing contents.</p>
+      </div>
+      <div class="border border-border-light dark:border-border-dark p-4 rounded-lg">
+        <h3 class="font-bold text-primary mb-2">Write (w)</h3>
+        <p class="text-sm">Permission to modify or delete files. For directories, allows creating/removing files.</p>
+      </div>
+      <div class="border border-border-light dark:border-border-dark p-4 rounded-lg">
+        <h3 class="font-bold text-primary mb-2">Execute (x)</h3>
+        <p class="text-sm">Permission to run a file as a program. For directories, allows entering (cd) into it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-xl border border-border-light dark:border-border-dark p-6 mb-8 bg-background-light/50 dark:bg-background-dark/50">
+    <h2 class="text-2xl font-bold mb-4">Permission Groups</h2>
+    <p class="mb-4 text-foreground-light/80 dark:text-foreground-dark/80">
+      Each file has three sets of permissions for three different groups:
+    </p>
+    <div class="space-y-3">
+      <div class="flex items-start gap-3">
+        <div class="font-mono font-bold text-primary min-w-[80px]">Owner (u)</div>
+        <div class="text-sm">The user who created or owns the file. Has full control if permissions allow.</div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="font-mono font-bold text-primary min-w-[80px]">Group (g)</div>
+        <div class="text-sm">Users who belong to the file's group. Share permissions defined for the group.</div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="font-mono font-bold text-primary min-w-[80px]">Others (o)</div>
+        <div class="text-sm">Everyone else on the system who is not the owner or in the group.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-xl border border-border-light dark:border-border-dark p-6 mb-8 bg-background-light/50 dark:bg-background-dark/50">
+    <h2 class="text-2xl font-bold mb-4">How Numeric Permissions Work (755, 777, etc.)</h2>
+    <p class="mb-4 text-foreground-light/80 dark:text-foreground-dark/80">
+      Numeric permissions use octal (base-8) representation where each digit represents one permission group (Owner, Group, Others). Each digit is the sum of read (4), write (2), and execute (1) permissions:
+    </p>
+    <div class="bg-background-dark/30 dark:bg-background-light/10 p-4 rounded-lg mb-4 font-mono text-sm">
+      <div class="space-y-2">
+        <div><span class="text-primary">4</span> = Read</div>
+        <div><span class="text-primary">2</span> = Write</div>
+        <div><span class="text-primary">1</span> = Execute</div>
+        <div class="mt-3 pt-3 border-t border-border-light dark:border-border-dark">
+          <div>7 = 4+2+1 = Read + Write + Execute</div>
+          <div>6 = 4+2 = Read + Write</div>
+          <div>5 = 4+1 = Read + Execute</div>
+          <div>4 = Read only</div>
+          <div>0 = No permissions</div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-3">
+      <div class="border-l-4 border-primary pl-4">
+        <div class="font-mono font-bold mb-1">755</div>
+        <div class="text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+          Owner: 7 (rwx), Group: 5 (r-x), Others: 5 (r-x)<br>
+          Common for executable files and scripts.
+        </div>
+      </div>
+      <div class="border-l-4 border-primary pl-4">
+        <div class="font-mono font-bold mb-1">644</div>
+        <div class="text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+          Owner: 6 (rw-), Group: 4 (r--), Others: 4 (r--)<br>
+          Standard for regular files (config files, documents).
+        </div>
+      </div>
+      <div class="border-l-4 border-primary pl-4">
+        <div class="font-mono font-bold mb-1">777</div>
+        <div class="text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+          Owner: 7 (rwx), Group: 7 (rwx), Others: 7 (rwx)<br>
+          Full access for everyone. <span class="text-red-500 font-semibold">⚠️ Avoid on production - security risk!</span>
+        </div>
+      </div>
+      <div class="border-l-4 border-primary pl-4">
+        <div class="font-mono font-bold mb-1">600</div>
+        <div class="text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+          Owner: 6 (rw-), Group: 0 (---), Others: 0 (---)<br>
+          Owner only, private files (like SSH keys, passwords).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-xl border border-border-light dark:border-border-dark p-6 mb-8 bg-background-light/50 dark:bg-background-dark/50">
+    <h2 class="text-2xl font-bold mb-4">Common Commands</h2>
+    <pre class="bg-background-dark/30 dark:bg-background-light/10 p-4 rounded-lg text-sm overflow-x-auto"><code>$ chmod 755 script.sh          # Set permissions to rwxr-xr-x
+$ chmod +x script.sh            # Add execute permission for all
+$ chmod u+w file.txt            # Add write for owner only
+$ chmod g-r file.txt            # Remove read for group
+$ chmod 644 file.txt            # Set to rw-r--r--
+
+$ chown user:group file.txt     # Change owner and group
+$ chown user file.txt           # Change owner only
+$ sudo chown -R www-data:www-data /var/www  # Recursive ownership
+
+$ groups                        # Show your groups
+$ id                            # Show user ID and groups
+$ whoami                        # Show current username
+</code></pre>
+  </div>
+
+  <div class="rounded-xl border border-border-light dark:border-border-dark p-6 mb-8 bg-background-light/50 dark:bg-background-dark/50">
+    <h2 class="text-2xl font-bold mb-4">User Management Basics</h2>
+    <div class="space-y-4">
+      <div>
+        <h3 class="font-bold mb-2">Creating Users</h3>
+        <pre class="bg-background-dark/30 dark:bg-background-light/10 p-4 rounded-lg text-sm"><code>$ sudo adduser newuser           # Interactive user creation
+$ sudo useradd -m -s /bin/bash newuser  # Non-interactive</code></pre>
+      </div>
+      <div>
+        <h3 class="font-bold mb-2">Managing Groups</h3>
+        <pre class="bg-background-dark/30 dark:bg-background-light/10 p-4 rounded-lg text-sm"><code>$ sudo groupadd developers       # Create group
+$ sudo usermod -aG sudo user     # Add user to sudo group
+$ sudo usermod -aG docker user   # Add user to docker group
+$ sudo deluser user              # Delete user</code></pre>
+      </div>
+      <div>
+        <h3 class="font-bold mb-2">Checking Permissions</h3>
+        <pre class="bg-background-dark/30 dark:bg-background-light/10 p-4 rounded-lg text-sm"><code>$ ls -l file.txt                 # Show permissions
+$ ls -la                          # Show all files with permissions
+$ stat file.txt                   # Detailed file info</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 rounded-xl bg-primary/10 dark:bg-primary/20 p-6">
+    <h3 class="text-lg font-bold mb-2">Security Tips</h3>
+    <ul class="list-disc list-inside space-y-1 text-sm">
+      <li>Never use <span class="font-mono">777</span> permissions - it gives everyone full access</li>
+      <li>Use <span class="font-mono">755</span> for directories, <span class="font-mono">644</span> for regular files</li>
+      <li>Keep sensitive files (like private keys) at <span class="font-mono">600</span></li>
+      <li>Web server files should typically be owned by the web server user (e.g., www-data)</li>
+      <li>Use groups to share access between users rather than opening permissions to everyone</li>
+    </ul>
+  </div>
+</div>
+{{end}}
+

@@ -1,0 +1,64 @@
+{{define "content"}}
+<div class="max-w-4xl mx-auto">
+  <div class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight">Golang Roadmap</h1>
+    <p class="mt-3 text-lg text-foreground-muted-light dark:text-foreground-muted-dark">A practical path to learn Go from zero to production-ready.</p>
+  </div>
+
+  <ol class="space-y-8">
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">1) Foundations</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1 text-foreground-light/80 dark:text-foreground-dark/80">
+        <li>Setup toolchain: Go, `go env`, modules (`go mod init`, `go get`).</li>
+        <li>Syntax: variables, types, constants, control flow, functions.</li>
+        <li>Slices, maps, structs, methods, interfaces, generics (type parameters).</li>
+        <li>Error handling patterns; `errors.Is`, `fmt.Errorf` with wrapping.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">2) Concurrency</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>Goroutines and the scheduler.</li>
+        <li>Channels: buffered/unbuffered, select, cancellation.</li>
+        <li>Context: timeouts, deadlines, cancellation propagation.</li>
+        <li>Sync: WaitGroup, Mutex/RWMutex, Atomic.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">3) Building APIs</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>net/http basics, handlers, middleware, routing (e.g., Gorilla Mux).</li>
+        <li>JSON encoding/decoding, validation.</li>
+        <li>Persistence: database/sql, pgx, GORM; migrations.</li>
+        <li>Config and secrets: env vars, flags, files.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">4) Testing & Quality</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>Testing: `testing` package, table tests, httptest, golden files.</li>
+        <li>Benchmarks and profiling (pprof), race detector, coverage.</li>
+        <li>Linting and formatting: `go fmt`, `go vet`, staticcheck.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h2 class="text-2xl font-bold">5) Production</h2>
+      <ul class="mt-3 list-disc list-inside space-y-1">
+        <li>Observability: structured logging, metrics (Prometheus), tracing (OTel).</li>
+        <li>Builds and releases: `go build`, multi-arch, Docker images.</li>
+        <li>Secure by default: input validation, timeouts, least privilege.</li>
+        <li>Performance: memory patterns, pooling, choosing the right data structure.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="mt-10 rounded-xl bg-primary/10 dark:bg-primary/20 p-6 text-center">
+    <p class="text-base font-medium">Tip: read and contribute to Go’s standard library and popular OSS to learn real-world patterns.</p>
+  </div>
+</div>
+{{end}}
+
