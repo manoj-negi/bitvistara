@@ -19,8 +19,99 @@
       </p>
       <ul class="mt-3 list-disc list-inside space-y-2">
         <li><strong>Project lifecycle:</strong> Every project follows five stages—Initiation (starting the project), Planning (creating the roadmap), Execution (doing the work), Monitoring (tracking progress), and Closure (wrapping up). Think of it like building a house: first you decide to build (initiation), plan the design (planning), construct it (execution), inspect along the way (monitoring), and finally move in (closure).</li>
+      </ul>
+      
+      <!-- Project Lifecycle Diagram -->
+      <div class="mt-6 mb-6 p-4 bg-background-light/50 dark:bg-background-dark/50 rounded-lg">
+        <h3 class="text-sm font-bold mb-3 text-center">Project Lifecycle Flow</h3>
+        <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-20 h-20 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold text-center px-2">Initiation</div>
+            <p class="text-xs mt-1 text-center">Start</p>
+          </div>
+          <div class="text-primary text-2xl">→</div>
+          <div class="flex flex-col items-center">
+            <div class="w-20 h-20 rounded-full bg-primary/80 text-white flex items-center justify-center text-xs font-bold text-center px-2">Planning</div>
+            <p class="text-xs mt-1 text-center">Plan</p>
+          </div>
+          <div class="text-primary text-2xl">→</div>
+          <div class="flex flex-col items-center">
+            <div class="w-20 h-20 rounded-full bg-primary/60 text-white flex items-center justify-center text-xs font-bold text-center px-2">Execution</div>
+            <p class="text-xs mt-1 text-center">Do</p>
+          </div>
+          <div class="text-primary text-2xl">→</div>
+          <div class="flex flex-col items-center">
+            <div class="w-20 h-20 rounded-full bg-primary/40 text-foreground-light dark:text-foreground-dark flex items-center justify-center text-xs font-bold text-center px-2 border-2 border-primary">Monitor</div>
+            <p class="text-xs mt-1 text-center">Check</p>
+          </div>
+          <div class="text-primary text-2xl">→</div>
+          <div class="flex flex-col items-center">
+            <div class="w-20 h-20 rounded-full bg-green-600 text-white flex items-center justify-center text-xs font-bold text-center px-2">Closure</div>
+            <p class="text-xs mt-1 text-center">Finish</p>
+          </div>
+        </div>
+      </div>
+
+      <ul class="mt-3 list-disc list-inside space-y-2">
         <li><strong>Triple constraint:</strong> Also called the "Iron Triangle," this principle states that in any project, you can optimize for two out of three: Scope (what you're delivering), Time (deadline), or Cost (budget). If you want to add more features (scope) and finish faster (time), the cost will increase. Understanding this helps manage expectations.</li>
+      </ul>
+      
+      <!-- Triple Constraint Triangle Diagram -->
+      <div class="mt-6 mb-6 p-4 bg-background-light/50 dark:bg-background-dark/50 rounded-lg">
+        <h3 class="text-sm font-bold mb-3 text-center">Triple Constraint (Iron Triangle)</h3>
+        <div class="flex justify-center">
+          <svg viewBox="0 0 200 180" class="w-full max-w-xs">
+            <polygon points="100,20 180,160 20,160" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"/>
+            <text x="100" y="35" text-anchor="middle" class="text-xs font-bold fill-current">SCOPE</text>
+            <text x="15" y="155" text-anchor="middle" class="text-xs font-bold fill-current">TIME</text>
+            <text x="185" y="155" text-anchor="middle" class="text-xs font-bold fill-current">COST</text>
+            <text x="100" y="105" text-anchor="middle" class="text-xs fill-foreground-muted-light dark:fill-foreground-muted-dark">Quality</text>
+          </svg>
+        </div>
+        <p class="text-xs text-center mt-2 text-foreground-muted-light dark:text-foreground-muted-dark">Change any side, affects the others</p>
+      </div>
+
+      <ul class="mt-3 list-disc list-inside space-y-2">
         <li><strong>Stakeholder management:</strong> Stakeholders are anyone affected by or interested in your project (clients, team members, executives, end users). Identify them early and understand their needs, concerns, and influence. Regular communication keeps them informed and engaged.</li>
+      </ul>
+
+      <!-- Stakeholder Map Diagram -->
+      <div class="mt-6 mb-6 p-4 bg-background-light/50 dark:bg-background-dark/50 rounded-lg">
+        <h3 class="text-sm font-bold mb-3 text-center">Stakeholder Power/Interest Matrix</h3>
+        <div class="flex justify-center">
+          <div class="relative w-full max-w-md">
+            <svg viewBox="0 0 300 300" class="w-full">
+              <!-- Grid lines -->
+              <line x1="150" y1="0" x2="150" y2="300" stroke="currentColor" stroke-width="1" stroke-dasharray="4,4" class="text-foreground-muted-light dark:text-foreground-muted-dark"/>
+              <line x1="0" y1="150" x2="300" y2="150" stroke="currentColor" stroke-width="1" stroke-dasharray="4,4" class="text-foreground-muted-light dark:text-foreground-muted-dark"/>
+              <!-- Labels -->
+              <text x="75" y="20" text-anchor="middle" class="text-xs font-bold fill-current">High Interest</text>
+              <text x="225" y="20" text-anchor="middle" class="text-xs font-bold fill-current">High Interest</text>
+              <text x="10" y="80" text-anchor="middle" class="text-xs font-bold fill-current">Low Power</text>
+              <text x="10" y="230" text-anchor="middle" class="text-xs font-bold fill-current">Low Power</text>
+              <text x="290" y="80" text-anchor="middle" class="text-xs font-bold fill-current">High Power</text>
+              <text x="290" y="230" text-anchor="middle" class="text-xs font-bold fill-current">High Power</text>
+              <!-- Quadrants -->
+              <text x="75" y="100" text-anchor="middle" class="text-xs fill-current">Manage Closely</text>
+              <text x="225" y="100" text-anchor="middle" class="text-xs fill-current">Keep Satisfied</text>
+              <text x="75" y="200" text-anchor="middle" class="text-xs fill-current">Monitor</text>
+              <text x="225" y="200" text-anchor="middle" class="text-xs fill-current">Keep Informed</text>
+              <!-- Example stakeholders -->
+              <circle cx="100" cy="50" r="15" fill="#ec1313" opacity="0.8"/>
+              <text x="100" y="55" text-anchor="middle" class="text-xs fill-white font-bold">PM</text>
+              <circle cx="200" cy="50" r="15" fill="#ec1313" opacity="0.6"/>
+              <text x="200" y="55" text-anchor="middle" class="text-xs fill-white font-bold">CEO</text>
+              <circle cx="100" cy="250" r="15" fill="#ec1313" opacity="0.4"/>
+              <text x="100" y="255" text-anchor="middle" class="text-xs fill-white font-bold">End User</text>
+              <circle cx="200" cy="250" r="15" fill="#ec1313" opacity="0.6"/>
+              <text x="200" y="255" text-anchor="middle" class="text-xs fill-white font-bold">Team</text>
+            </svg>
+          </div>
+        </div>
+        <p class="text-xs text-center mt-2 text-foreground-muted-light dark:text-foreground-muted-dark">Plot stakeholders by power and interest</p>
+      </div>
+
+      <ul class="mt-3 list-disc list-inside space-y-2">
         <li><strong>Requirements gathering:</strong> This means understanding exactly what needs to be built or delivered. Ask questions, document everything clearly, and get sign-offs. Unclear requirements lead to rework and delays—imagine building a car when the customer wanted a bicycle.</li>
         <li><strong>Risk management:</strong> Identify potential problems before they happen (like "what if a key team member leaves?" or "what if the budget gets cut?"). Create plans to mitigate risks—think of it as having a backup plan for your backup plan.</li>
       </ul>
@@ -33,11 +124,91 @@
       </p>
       <ul class="mt-3 list-disc list-inside space-y-2">
         <li><strong>Waterfall vs Agile:</strong> Waterfall is like building a house—you complete foundation, then walls, then roof, in strict order. Agile is like iterative improvement—build a small working version, test it, improve it, repeat. Scrum and Kanban are Agile frameworks. Waterfall works for well-defined projects; Agile is better when requirements might change.</li>
+      </ul>
+
+      <!-- Waterfall vs Agile Diagram -->
+      <div class="mt-6 mb-6 p-4 bg-background-light/50 dark:bg-background-dark/50 rounded-lg">
+        <h3 class="text-sm font-bold mb-3 text-center">Waterfall vs Agile Comparison</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="text-xs font-bold mb-2 text-primary">Waterfall (Sequential)</h4>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <div class="w-full h-6 bg-blue-500 text-white text-xs flex items-center justify-center rounded">Requirements</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-full h-6 bg-blue-600 text-white text-xs flex items-center justify-center rounded">Design</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-full h-6 bg-blue-700 text-white text-xs flex items-center justify-center rounded">Development</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-full h-6 bg-blue-800 text-white text-xs flex items-center justify-center rounded">Testing</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-full h-6 bg-blue-900 text-white text-xs flex items-center justify-center rounded">Deployment</div>
+              </div>
+            </div>
+            <p class="text-xs mt-2 text-foreground-muted-light dark:text-foreground-muted-dark">Linear, one phase after another</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold mb-2 text-primary">Agile (Iterative)</h4>
+            <div class="space-y-1">
+              <div class="flex items-center gap-1">
+                <div class="flex-1 h-8 bg-primary text-white text-xs flex items-center justify-center rounded">Sprint 1</div>
+                <div class="flex-1 h-8 bg-primary/80 text-white text-xs flex items-center justify-center rounded">Sprint 2</div>
+                <div class="flex-1 h-8 bg-primary/60 text-white text-xs flex items-center justify-center rounded">Sprint 3</div>
+              </div>
+              <div class="flex items-center gap-1">
+                <div class="flex-1 h-8 bg-green-600 text-white text-xs flex items-center justify-center rounded">Sprint 1</div>
+                <div class="flex-1 h-8 bg-green-700 text-white text-xs flex items-center justify-center rounded">Sprint 2</div>
+                <div class="flex-1 h-8 bg-green-800 text-white text-xs flex items-center justify-center rounded">Sprint 3</div>
+              </div>
+            </div>
+            <p class="text-xs mt-2 text-foreground-muted-light dark:text-foreground-muted-dark">Cycles: Plan → Build → Test → Review → Repeat</p>
+          </div>
+        </div>
+      </div>
+
+      <ul class="mt-3 list-disc list-inside space-y-2">
         <li><strong>Hybrid approaches:</strong> Sometimes you need a mix. For example, plan big milestones (Waterfall style) but execute in small iterations (Agile style). Use this when parts of your project are fixed and others need flexibility.</li>
         <li><strong>Certifications:</strong> PMP (Project Management Professional) from PMI is globally recognized. PRINCE2 is popular in Europe. These certifications teach standardized processes and demonstrate expertise. They're valuable for career advancement.</li>
         <li><strong>Agile ceremonies:</strong> Sprint planning (decide what to work on), daily standups (quick 15-min team updates), retrospectives (what went well, what to improve). These regular meetings keep teams aligned and continuously improving.</li>
         <li><strong>User stories & backlog:</strong> A user story describes a feature from the user's perspective ("As a customer, I want to reset my password"). The backlog is your prioritized to-do list. Burndown charts show how much work remains over time—like watching your to-do list shrink.</li>
       </ul>
+
+      <!-- Kanban Board Diagram -->
+      <div class="mt-6 mb-6 p-4 bg-background-light/50 dark:bg-background-dark/50 rounded-lg">
+        <h3 class="text-sm font-bold mb-3 text-center">Kanban Board Example</h3>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="bg-blue-100 dark:bg-blue-900/30 p-2 rounded">
+            <h4 class="text-xs font-bold mb-2 text-center">To Do</h4>
+            <div class="space-y-1">
+              <div class="bg-white dark:bg-gray-800 p-2 rounded text-xs">Task 1</div>
+              <div class="bg-white dark:bg-gray-800 p-2 rounded text-xs">Task 2</div>
+            </div>
+          </div>
+          <div class="bg-yellow-100 dark:bg-yellow-900/30 p-2 rounded">
+            <h4 class="text-xs font-bold mb-2 text-center">In Progress</h4>
+            <div class="space-y-1">
+              <div class="bg-white dark:bg-gray-800 p-2 rounded text-xs">Task 3</div>
+            </div>
+          </div>
+          <div class="bg-purple-100 dark:bg-purple-900/30 p-2 rounded">
+            <h4 class="text-xs font-bold mb-2 text-center">Review</h4>
+            <div class="space-y-1">
+              <div class="bg-white dark:bg-gray-800 p-2 rounded text-xs">Task 4</div>
+            </div>
+          </div>
+          <div class="bg-green-100 dark:bg-green-900/30 p-2 rounded">
+            <h4 class="text-xs font-bold mb-2 text-center">Done</h4>
+            <div class="space-y-1">
+              <div class="bg-white dark:bg-gray-800 p-2 rounded text-xs">Task 5</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-center mt-2 text-foreground-muted-light dark:text-foreground-muted-dark">Tasks flow left to right through stages</p>
+      </div>
     </li>
 
     <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
@@ -50,8 +221,86 @@
         <li><strong>Documentation tools:</strong> Confluence (wiki-style documentation), Notion (all-in-one workspace), Google Workspace (Docs, Sheets, Slides). Store project requirements, meeting notes, and decisions in one searchable place. When someone asks "why did we decide X?", you can find the answer.</li>
         <li><strong>Collaboration tools:</strong> Slack and Teams are for real-time chat and quick questions. Miro is a digital whiteboard for brainstorming. These replace constant emails and meetings with organized conversations.</li>
         <li><strong>Tracking visuals:</strong> Gantt charts show tasks as horizontal bars on a timeline (like a calendar for your project). Task boards show work items moving through stages (To Do → In Progress → Done). Both help visualize progress.</li>
+      </ul>
+
+      <!-- Gantt Chart Diagram -->
+      <div class="mt-6 mb-6 p-4 bg-background-light/50 dark:bg-background-dark/50 rounded-lg">
+        <h3 class="text-sm font-bold mb-3 text-center">Gantt Chart Example</h3>
+        <div class="overflow-x-auto">
+          <div class="min-w-full">
+            <div class="grid grid-cols-8 gap-1 text-xs">
+              <div class="font-bold">Task</div>
+              <div class="text-center font-bold">W1</div>
+              <div class="text-center font-bold">W2</div>
+              <div class="text-center font-bold">W3</div>
+              <div class="text-center font-bold">W4</div>
+              <div class="text-center font-bold">W5</div>
+              <div class="text-center font-bold">W6</div>
+              <div class="text-center font-bold">W7</div>
+              
+              <div class="text-sm">Planning</div>
+              <div class="col-span-2 bg-primary h-6 rounded"></div>
+              <div></div><div></div><div></div><div></div><div></div>
+              
+              <div class="text-sm">Design</div>
+              <div></div>
+              <div class="col-span-2 bg-blue-600 h-6 rounded"></div>
+              <div></div><div></div><div></div><div></div>
+              
+              <div class="text-sm">Development</div>
+              <div></div><div></div>
+              <div class="col-span-3 bg-green-600 h-6 rounded"></div>
+              <div></div><div></div>
+              
+              <div class="text-sm">Testing</div>
+              <div></div><div></div><div></div>
+              <div class="col-span-2 bg-yellow-600 h-6 rounded"></div>
+              <div></div><div></div>
+              
+              <div class="text-sm">Deployment</div>
+              <div></div><div></div><div></div><div></div>
+              <div class="bg-purple-600 h-6 rounded"></div>
+              <div></div><div></div>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-center mt-2 text-foreground-muted-light dark:text-foreground-muted-dark">Tasks shown as bars over time periods</p>
+      </div>
+
+      <ul class="mt-3 list-disc list-inside space-y-2">
         <li><strong>Reporting:</strong> Dashboards are visual summaries showing key metrics (KPIs) like "tasks completed this week" or "budget remaining." Status updates are regular summaries (weekly or monthly) explaining what's done, what's next, and any blockers.</li>
       </ul>
+
+      <!-- Burndown Chart Diagram -->
+      <div class="mt-6 mb-6 p-4 bg-background-light/50 dark:bg-background-dark/50 rounded-lg">
+        <h3 class="text-sm font-bold mb-3 text-center">Burndown Chart Example</h3>
+        <div class="flex justify-center">
+          <svg viewBox="0 0 400 200" class="w-full max-w-md">
+            <!-- Axes -->
+            <line x1="40" y1="20" x2="40" y2="180" stroke="currentColor" stroke-width="2" class="text-foreground-light dark:text-foreground-dark"/>
+            <line x1="40" y1="180" x2="380" y2="180" stroke="currentColor" stroke-width="2" class="text-foreground-light dark:text-foreground-dark"/>
+            <!-- Ideal line (straight) -->
+            <line x1="40" y1="20" x2="380" y2="180" stroke="#ec1313" stroke-width="2" stroke-dasharray="4,4" opacity="0.6"/>
+            <!-- Actual progress line (curved) -->
+            <path d="M 40 20 Q 150 60 220 100 T 380 160" fill="none" stroke="#10b981" stroke-width="3"/>
+            <!-- Labels -->
+            <text x="20" y="100" text-anchor="middle" class="text-xs fill-current">Tasks</text>
+            <text x="210" y="195" text-anchor="middle" class="text-xs fill-current">Sprints / Time</text>
+            <!-- Data points -->
+            <circle cx="40" cy="20" r="3" fill="#10b981"/>
+            <circle cx="120" cy="50" r="3" fill="#10b981"/>
+            <circle cx="200" cy="90" r="3" fill="#10b981"/>
+            <circle cx="280" cy="130" r="3" fill="#10b981"/>
+            <circle cx="360" cy="160" r="3" fill="#10b981"/>
+            <!-- Legend -->
+            <line x1="250" y1="30" x2="270" y2="30" stroke="#ec1313" stroke-width="2" stroke-dasharray="4,4"/>
+            <text x="275" y="35" class="text-xs fill-current">Ideal</text>
+            <line x1="250" y1="45" x2="270" y2="45" stroke="#10b981" stroke-width="3"/>
+            <text x="275" y="50" class="text-xs fill-current">Actual</text>
+          </svg>
+        </div>
+        <p class="text-xs text-center mt-2 text-foreground-muted-light dark:text-foreground-muted-dark">Shows remaining work decreasing over time</p>
+      </div>
     </li>
 
     <li class="rounded-xl border border-border-light dark:border-border-dark p-6">
