@@ -131,14 +131,17 @@ func main() {
 	})
 
 	// Roadmaps
-	r.HandleFunc("/roadmap/golang", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "pages/golang-roadmap.html", nil)
+	r.HandleFunc("/golang", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/roadmaps/golang-roadmap.html", nil)
 	})
-	r.HandleFunc("/roadmap/devops", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "pages/devops-roadmap.html", nil)
+	r.HandleFunc("/devops", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/roadmaps/devops-roadmap.html", nil)
 	})
-	r.HandleFunc("/roadmap/project-manager", func(w http.ResponseWriter, _ *http.Request) {
+	r.HandleFunc("/project-manager", func(w http.ResponseWriter, _ *http.Request) {
 		render(w, "pages/project-manager-roadmap.html", nil)
+	})
+	r.HandleFunc("/ai-ml", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/ai-ml-roadmap.html", nil)
 	})
 
 	srv := &http.Server{

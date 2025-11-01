@@ -78,33 +78,43 @@
       <!-- Stakeholder Map Diagram -->
       <div class="mt-6 mb-6 p-4 bg-background-light/50 dark:bg-background-dark/50 rounded-lg">
         <h3 class="text-sm font-bold mb-3 text-center">Stakeholder Power/Interest Matrix</h3>
-        <div class="flex justify-center">
-          <div class="relative w-full max-w-md">
-            <svg viewBox="0 0 300 300" class="w-full">
-              <!-- Grid lines -->
-              <line x1="150" y1="0" x2="150" y2="300" stroke="currentColor" stroke-width="1" stroke-dasharray="4,4" class="text-foreground-muted-light dark:text-foreground-muted-dark"/>
-              <line x1="0" y1="150" x2="300" y2="150" stroke="currentColor" stroke-width="1" stroke-dasharray="4,4" class="text-foreground-muted-light dark:text-foreground-muted-dark"/>
-              <!-- Labels -->
-              <text x="75" y="20" text-anchor="middle" class="text-xs font-bold fill-current">High Interest</text>
-              <text x="225" y="20" text-anchor="middle" class="text-xs font-bold fill-current">High Interest</text>
-              <text x="10" y="80" text-anchor="middle" class="text-xs font-bold fill-current">Low Power</text>
-              <text x="10" y="230" text-anchor="middle" class="text-xs font-bold fill-current">Low Power</text>
-              <text x="290" y="80" text-anchor="middle" class="text-xs font-bold fill-current">High Power</text>
-              <text x="290" y="230" text-anchor="middle" class="text-xs font-bold fill-current">High Power</text>
-              <!-- Quadrants -->
-              <text x="75" y="100" text-anchor="middle" class="text-xs fill-current">Manage Closely</text>
-              <text x="225" y="100" text-anchor="middle" class="text-xs fill-current">Keep Satisfied</text>
-              <text x="75" y="200" text-anchor="middle" class="text-xs fill-current">Monitor</text>
-              <text x="225" y="200" text-anchor="middle" class="text-xs fill-current">Keep Informed</text>
+        <div class="flex justify-center p-4">
+          <div class="relative w-full max-w-lg overflow-visible">
+            <svg viewBox="0 0 400 350" class="w-full h-auto" preserveAspectRatio="xMidYMid meet">
+              <!-- Grid lines (centered) -->
+              <line x1="200" y1="30" x2="200" y2="320" stroke="currentColor" stroke-width="2" stroke-dasharray="4,4" class="text-foreground-muted-light dark:text-foreground-muted-dark"/>
+              <line x1="50" y1="175" x2="350" y2="175" stroke="currentColor" stroke-width="2" stroke-dasharray="4,4" class="text-foreground-muted-light dark:text-foreground-muted-dark"/>
+              
+              <!-- Axis labels (top) -->
+              <text x="125" y="20" text-anchor="middle" class="text-xs font-bold fill-current">High Interest</text>
+              <text x="275" y="20" text-anchor="middle" class="text-xs font-bold fill-current">High Interest</text>
+              
+              <!-- Axis labels (left) -->
+              <text x="25" y="100" text-anchor="middle" class="text-xs font-bold fill-current">Low Power</text>
+              <text x="25" y="250" text-anchor="middle" class="text-xs font-bold fill-current">Low Power</text>
+              
+              <!-- Axis labels (right) -->
+              <text x="375" y="100" text-anchor="middle" class="text-xs font-bold fill-current">High Power</text>
+              <text x="375" y="250" text-anchor="middle" class="text-xs font-bold fill-current">High Power</text>
+              
+              <!-- Quadrant labels -->
+              <text x="125" y="140" text-anchor="middle" class="text-xs fill-current font-semibold">Manage Closely</text>
+              <text x="275" y="140" text-anchor="middle" class="text-xs fill-current font-semibold">Keep Satisfied</text>
+              <text x="125" y="210" text-anchor="middle" class="text-xs fill-current font-semibold">Monitor</text>
+              <text x="275" y="210" text-anchor="middle" class="text-xs fill-current font-semibold">Keep Informed</text>
+              
               <!-- Example stakeholders -->
-              <circle cx="100" cy="50" r="15" fill="#ec1313" opacity="0.8"/>
-              <text x="100" y="55" text-anchor="middle" class="text-xs fill-white font-bold">PM</text>
-              <circle cx="200" cy="50" r="15" fill="#ec1313" opacity="0.6"/>
-              <text x="200" y="55" text-anchor="middle" class="text-xs fill-white font-bold">CEO</text>
-              <circle cx="100" cy="250" r="15" fill="#ec1313" opacity="0.4"/>
-              <text x="100" y="255" text-anchor="middle" class="text-xs fill-white font-bold">End User</text>
-              <circle cx="200" cy="250" r="15" fill="#ec1313" opacity="0.6"/>
-              <text x="200" y="255" text-anchor="middle" class="text-xs fill-white font-bold">Team</text>
+              <circle cx="140" cy="80" r="18" fill="#ec1313" opacity="0.8"/>
+              <text x="140" y="86" text-anchor="middle" class="text-xs fill-white font-bold">PM</text>
+              
+              <circle cx="260" cy="80" r="18" fill="#ec1313" opacity="0.6"/>
+              <text x="260" y="86" text-anchor="middle" class="text-xs fill-white font-bold">CEO</text>
+              
+              <circle cx="140" cy="270" r="18" fill="#ec1313" opacity="0.4"/>
+              <text x="140" y="276" text-anchor="middle" class="text-xs fill-white font-bold">End User</text>
+              
+              <circle cx="260" cy="270" r="18" fill="#ec1313" opacity="0.6"/>
+              <text x="260" y="276" text-anchor="middle" class="text-xs fill-white font-bold">Team</text>
             </svg>
           </div>
         </div>
