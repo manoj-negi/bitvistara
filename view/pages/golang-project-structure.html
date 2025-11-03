@@ -1,0 +1,429 @@
+{{define "content"}}
+<div class="max-w-5xl mx-auto">
+  <div class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight">Basic Golang Project Structure</h1>
+    <p class="mt-3 text-lg text-foreground-muted-light dark:text-foreground-muted-dark">Understanding the standard layout for Go applications</p>
+  </div>
+
+  <div class="mb-6 prose dark:prose-invert max-w-none">
+    <p class="text-base text-foreground-light/80 dark:text-foreground-dark/80">
+      Go projects follow a conventional structure that makes code organization clear and maintainable. While Go doesn't enforce a strict project layout, there are widely accepted conventions that help teams collaborate and make projects easier to understand. This guide shows the basic structure for a typical Go application.
+    </p>
+  </div>
+
+  <!-- Basic Project Structure -->
+  <div class="bg-background-light dark:bg-background-dark rounded-xl border border-border-light dark:border-border-dark p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">Standard Project Layout</h2>
+    <div class="font-mono text-sm space-y-1">
+      <div class="flex items-center gap-2 text-primary font-bold">
+        <span>my-go-project/</span>
+        <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark">(project root)</span>
+      </div>
+      
+      <div class="ml-4 space-y-1">
+        <!-- go.mod -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">go.mod</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Module definition & dependencies</span>
+        </div>
+        
+        <!-- go.sum -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">go.sum</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Dependency checksums</span>
+        </div>
+
+        <!-- README.md -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">README.md</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Project documentation</span>
+        </div>
+
+        <!-- .gitignore -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">.gitignore</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Git ignore patterns</span>
+        </div>
+
+        <!-- main.go -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">main.go</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Application entry point</span>
+        </div>
+
+        <!-- cmd/ -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">cmd/</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Executable applications</span>
+        </div>
+        <div class="ml-8 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   └──</span>
+            <span class="text-foreground-light dark:text-foreground-dark font-semibold">app/</span>
+            <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Main application</span>
+          </div>
+          <div class="ml-4 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│       └──</span>
+              <span class="text-foreground-light dark:text-foreground-dark">main.go</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- internal/ -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">internal/</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Private application code</span>
+        </div>
+        <div class="ml-8 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   ├──</span>
+            <span class="text-foreground-light dark:text-foreground-dark font-semibold">handlers/</span>
+            <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">HTTP handlers</span>
+          </div>
+          <div class="ml-4 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   │   └──</span>
+              <span class="text-foreground-light dark:text-foreground-dark">user.go</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   ├──</span>
+            <span class="text-foreground-light dark:text-foreground-dark font-semibold">models/</span>
+            <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Data models</span>
+          </div>
+          <div class="ml-4 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   │   └──</span>
+              <span class="text-foreground-light dark:text-foreground-dark">user.go</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   ├──</span>
+            <span class="text-foreground-light dark:text-foreground-dark font-semibold">database/</span>
+            <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">DB connection & queries</span>
+          </div>
+          <div class="ml-4 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   │   └──</span>
+              <span class="text-foreground-light dark:text-foreground-dark">db.go</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   └──</span>
+            <span class="text-foreground-light dark:text-foreground-dark font-semibold">config/</span>
+            <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Configuration</span>
+          </div>
+          <div class="ml-4 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│       └──</span>
+              <span class="text-foreground-light dark:text-foreground-dark">config.go</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- pkg/ -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">pkg/</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Public library code</span>
+        </div>
+        <div class="ml-8 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   ├──</span>
+            <span class="text-foreground-light dark:text-foreground-dark font-semibold">utils/</span>
+            <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Utility functions</span>
+          </div>
+          <div class="ml-4 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   │   └──</span>
+              <span class="text-foreground-light dark:text-foreground-dark">helpers.go</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   └──</span>
+            <span class="text-foreground-light dark:text-foreground-dark font-semibold">validator/</span>
+            <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Validation logic</span>
+          </div>
+          <div class="ml-4 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│       └──</span>
+              <span class="text-foreground-light dark:text-foreground-dark">validator.go</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- api/ -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">api/</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">API definitions</span>
+        </div>
+        <div class="ml-8 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   └──</span>
+            <span class="text-foreground-light dark:text-foreground-dark">routes.go</span>
+          </div>
+        </div>
+
+        <!-- configs/ -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">configs/</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Configuration files</span>
+        </div>
+        <div class="ml-8 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   ├──</span>
+            <span class="text-foreground-light dark:text-foreground-dark">config.yaml</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   └──</span>
+            <span class="text-foreground-light dark:text-foreground-dark">config.env</span>
+          </div>
+        </div>
+
+        <!-- migrations/ -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">migrations/</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Database migrations</span>
+        </div>
+        <div class="ml-8 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   ├──</span>
+            <span class="text-foreground-light dark:text-foreground-dark">001_create_users.sql</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   └──</span>
+            <span class="text-foreground-light dark:text-foreground-dark">002_create_posts.sql</span>
+          </div>
+        </div>
+
+        <!-- tests/ -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">├──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">tests/</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Test files</span>
+        </div>
+        <div class="ml-8 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">│   └──</span>
+            <span class="text-foreground-light dark:text-foreground-dark">user_test.go</span>
+          </div>
+        </div>
+
+        <!-- docs/ -->
+        <div class="flex items-center gap-2">
+          <span class="text-foreground-muted-light dark:text-foreground-muted-dark">└──</span>
+          <span class="text-foreground-light dark:text-foreground-dark font-semibold">docs/</span>
+          <span class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark ml-2">Documentation</span>
+        </div>
+        <div class="ml-8 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground-muted-light dark:text-foreground-muted-dark">    └──</span>
+            <span class="text-foreground-light dark:text-foreground-dark">api.md</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Explanations -->
+  <div class="space-y-6">
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        <span>Root Files</span>
+      </h3>
+      <div class="space-y-3 text-sm">
+        <div>
+          <p class="font-semibold text-primary mb-1">go.mod</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80">
+            Defines the module path and Go version. Lists all dependencies with their versions. Created with <code class="bg-background-dark/50 px-1 rounded">go mod init github.com/username/project</code>.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">go.sum</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80">
+            Contains cryptographic checksums of all dependencies. Ensures reproducible builds. Auto-generated by Go.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">main.go</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80">
+            The entry point for simple applications. Contains the <code class="bg-background-dark/50 px-1 rounded">main()</code> function. For larger projects, use <code class="bg-background-dark/50 px-1 rounded">cmd/</code> instead.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">README.md</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80">
+            Project documentation, installation instructions, usage examples, and contribution guidelines.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">.gitignore</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80">
+            Excludes build artifacts, IDE files, and environment-specific files from version control.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+        </svg>
+        <span>Directory Structure</span>
+      </h3>
+      <div class="space-y-3 text-sm">
+        <div>
+          <p class="font-semibold text-primary mb-1">cmd/</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
+            Contains the main applications for your project. Each subdirectory is a separate executable. This allows multiple binaries in one project (e.g., <code class="bg-background-dark/50 px-1 rounded">cmd/server</code>, <code class="bg-background-dark/50 px-1 rounded">cmd/cli</code>).
+          </p>
+          <p class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark italic">
+            Example: <code class="bg-background-dark/50 px-1 rounded">cmd/web/main.go</code> for a web server, <code class="bg-background-dark/50 px-1 rounded">cmd/migrate/main.go</code> for database migrations.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">internal/</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
+            Private application code that cannot be imported by other projects. Go enforces this restriction. Use for business logic, handlers, models, and database code specific to your application.
+          </p>
+          <p class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark italic">
+            Common subdirectories: <code class="bg-background-dark/50 px-1 rounded">handlers/</code>, <code class="bg-background-dark/50 px-1 rounded">models/</code>, <code class="bg-background-dark/50 px-1 rounded">database/</code>, <code class="bg-background-dark/50 px-1 rounded">config/</code>, <code class="bg-background-dark/50 px-1 rounded">middleware/</code>.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">pkg/</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
+            Public library code that can be imported by other projects. Use for reusable components, utilities, and shared libraries.
+          </p>
+          <p class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark italic">
+            Example: <code class="bg-background-dark/50 px-1 rounded">pkg/utils/</code> for helper functions, <code class="bg-background-dark/50 px-1 rounded">pkg/validator/</code> for validation logic.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">api/</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
+            API definitions, protocol buffer files, or OpenAPI specs. Useful for documenting and versioning your API.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">configs/</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
+            Configuration files (YAML, JSON, TOML, .env). Store default configurations and environment-specific settings.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">migrations/</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
+            Database migration files. Use tools like <code class="bg-background-dark/50 px-1 rounded">golang-migrate</code> or <code class="bg-background-dark/50 px-1 rounded">sql-migrate</code> to manage schema changes.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">tests/</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
+            Integration tests and test fixtures. Note: Go convention is to put <code class="bg-background-dark/50 px-1 rounded">*_test.go</code> files next to the source files.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-primary mb-1">docs/</p>
+          <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
+            Additional documentation, API specs, architecture diagrams, and design documents.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        </svg>
+        <span>Best Practices</span>
+      </h3>
+      <ul class="space-y-2 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Keep it simple:</strong> Small projects don't need all directories. Start with <code class="bg-background-dark/50 px-1 rounded">main.go</code> and add structure as needed.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Use internal/ for app-specific code:</strong> Prevents external imports and keeps your code encapsulated.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Put test files next to source:</strong> Go's testing convention uses <code class="bg-background-dark/50 px-1 rounded">*_test.go</code> files in the same package directory.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Organize by feature for larger projects:</strong> Instead of <code class="bg-background-dark/50 px-1 rounded">internal/handlers/</code>, consider <code class="bg-background-dark/50 px-1 rounded">internal/user/</code>, <code class="bg-background-dark/50 px-1 rounded">internal/order/</code> (domain-driven design).</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Version control go.sum:</strong> Always commit <code class="bg-background-dark/50 px-1 rounded">go.sum</code> to ensure reproducible builds.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bg-gradient-to-br from-primary/10 to-blue-500/10 dark:from-primary/20 dark:to-blue-500/20 rounded-xl border border-primary/20 p-6">
+      <h3 class="text-xl font-bold mb-3">Quick Start Example</h3>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Initialize a new Go module
+go mod init github.com/username/my-go-project
+
+# Create basic structure
+mkdir -p cmd/app internal/handlers internal/models
+mkdir -p pkg/utils configs migrations tests docs
+
+# Create main.go
+cat > main.go << 'EOF'
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, Go!")
+}
+EOF
+
+# Run the project
+go run main.go</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Next Page Navigation -->
+  <div class="mt-12 flex justify-center">
+    <a href="/golang-create-project" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl">
+      <span>Next: Create Your First Go Project</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+      </svg>
+    </a>
+  </div>
+</div>
+{{end}}
+

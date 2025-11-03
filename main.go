@@ -120,6 +120,16 @@ func main() {
 		render(w, "pages/linux-permissions.html", nil)
 	})
 
+	// Golang project structure page
+	r.HandleFunc("/golang-project-structure", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/golang-project-structure.html", nil)
+	})
+
+	// Golang create project tutorial page
+	r.HandleFunc("/golang-create-project", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/golang-create-project.html", nil)
+	})
+
 	// Optional: if you want to expose server.html on /server
 	r.HandleFunc("/server", func(w http.ResponseWriter, _ *http.Request) {
 		render(w, "pages/server.html", nil)
