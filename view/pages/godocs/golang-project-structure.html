@@ -249,7 +249,7 @@
         <div>
           <p class="font-semibold text-primary mb-1">go.mod</p>
           <p class="text-foreground-light/80 dark:text-foreground-dark/80">
-            Defines the module path and Go version. Lists all dependencies with their versions. Created with <code class="bg-background-dark/50 px-1 rounded">go mod init github.com/username/project</code>.
+            Defines the module path and Go version. Lists all dependencies with their versions. Created with <code class="text-primary px-1 rounded">go mod init github.com/username/project</code>.
           </p>
         </div>
         <div>
@@ -261,7 +261,7 @@
         <div>
           <p class="font-semibold text-primary mb-1">main.go</p>
           <p class="text-foreground-light/80 dark:text-foreground-dark/80">
-            The entry point for simple applications. Contains the <code class="bg-background-dark/50 px-1 rounded">main()</code> function. For larger projects, use <code class="bg-background-dark/50 px-1 rounded">cmd/</code> instead.
+            The entry point for simple applications. Contains the <code class="text-primary px-1 rounded">main()</code> function. For larger projects, use <code class="text-primary px-1 rounded">cmd/</code> instead.
           </p>
         </div>
         <div>
@@ -290,10 +290,10 @@
         <div>
           <p class="font-semibold text-primary mb-1">cmd/</p>
           <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
-            Contains the main applications for your project. Each subdirectory is a separate executable. This allows multiple binaries in one project (e.g., <code class="bg-background-dark/50 px-1 rounded">cmd/server</code>, <code class="bg-background-dark/50 px-1 rounded">cmd/cli</code>).
+            Contains the main applications for your project. Each subdirectory is a separate executable. This allows multiple binaries in one project (e.g., <code class="text-primary px-1 rounded">cmd/server</code>, <code class="text-primary px-1 rounded">cmd/cli</code>).
           </p>
           <p class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark italic">
-            Example: <code class="bg-background-dark/50 px-1 rounded">cmd/web/main.go</code> for a web server, <code class="bg-background-dark/50 px-1 rounded">cmd/migrate/main.go</code> for database migrations.
+            Example: <code class="text-primary px-1 rounded">cmd/web/main.go</code> for a web server, <code class="text-primary px-1 rounded">cmd/migrate/main.go</code> for database migrations.
           </p>
         </div>
         <div>
@@ -302,7 +302,7 @@
             Private application code that cannot be imported by other projects. Go enforces this restriction. Use for business logic, handlers, models, and database code specific to your application.
           </p>
           <p class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark italic">
-            Common subdirectories: <code class="bg-background-dark/50 px-1 rounded">handlers/</code>, <code class="bg-background-dark/50 px-1 rounded">models/</code>, <code class="bg-background-dark/50 px-1 rounded">database/</code>, <code class="bg-background-dark/50 px-1 rounded">config/</code>, <code class="bg-background-dark/50 px-1 rounded">middleware/</code>.
+            Common subdirectories: <code class="text-primary px-1 rounded">handlers/</code>, <code class="text-primary px-1 rounded">models/</code>, <code class="text-primary px-1 rounded">database/</code>, <code class="text-primary px-1 rounded">config/</code>, <code class="text-primary px-1 rounded">middleware/</code>.
           </p>
         </div>
         <div>
@@ -311,7 +311,7 @@
             Public library code that can be imported by other projects. Use for reusable components, utilities, and shared libraries.
           </p>
           <p class="text-xs text-foreground-muted-light dark:text-foreground-muted-dark italic">
-            Example: <code class="bg-background-dark/50 px-1 rounded">pkg/utils/</code> for helper functions, <code class="bg-background-dark/50 px-1 rounded">pkg/validator/</code> for validation logic.
+            Example: <code class="text-primary px-1 rounded">pkg/utils/</code> for helper functions, <code class="text-primary px-1 rounded">pkg/validator/</code> for validation logic.
           </p>
         </div>
         <div>
@@ -329,13 +329,13 @@
         <div>
           <p class="font-semibold text-primary mb-1">migrations/</p>
           <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
-            Database migration files. Use tools like <code class="bg-background-dark/50 px-1 rounded">golang-migrate</code> or <code class="bg-background-dark/50 px-1 rounded">sql-migrate</code> to manage schema changes.
+            Database migration files. Use tools like <code class="text-primary px-1 rounded">golang-migrate</code> or <code class="text-primary px-1 rounded">sql-migrate</code> to manage schema changes.
           </p>
         </div>
         <div>
           <p class="font-semibold text-primary mb-1">tests/</p>
           <p class="text-foreground-light/80 dark:text-foreground-dark/80 mb-2">
-            Integration tests and test fixtures. Note: Go convention is to put <code class="bg-background-dark/50 px-1 rounded">*_test.go</code> files next to the source files.
+            Integration tests and test fixtures. Note: Go convention is to put <code class="text-primary px-1 rounded">*_test.go</code> files next to the source files.
           </p>
         </div>
         <div>
@@ -359,7 +359,7 @@
           <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
           </svg>
-          <span><strong>Keep it simple:</strong> Small projects don't need all directories. Start with <code class="bg-background-dark/50 px-1 rounded">main.go</code> and add structure as needed.</span>
+          <span><strong>Keep it simple:</strong> Small projects don't need all directories. Start with <code class="text-primary px-1 rounded">main.go</code> and add structure as needed.</span>
         </li>
         <li class="flex items-start gap-2">
           <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -371,19 +371,19 @@
           <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
           </svg>
-          <span><strong>Put test files next to source:</strong> Go's testing convention uses <code class="bg-background-dark/50 px-1 rounded">*_test.go</code> files in the same package directory.</span>
+          <span><strong>Put test files next to source:</strong> Go's testing convention uses <code class="text-primary px-1 rounded">*_test.go</code> files in the same package directory.</span>
         </li>
         <li class="flex items-start gap-2">
           <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
           </svg>
-          <span><strong>Organize by feature for larger projects:</strong> Instead of <code class="bg-background-dark/50 px-1 rounded">internal/handlers/</code>, consider <code class="bg-background-dark/50 px-1 rounded">internal/user/</code>, <code class="bg-background-dark/50 px-1 rounded">internal/order/</code> (domain-driven design).</span>
+          <span><strong>Organize by feature for larger projects:</strong> Instead of <code class="text-primary px-1 rounded">internal/handlers/</code>, consider <code class="text-primary px-1 rounded">internal/user/</code>, <code class="text-primary px-1 rounded">internal/order/</code> (domain-driven design).</span>
         </li>
         <li class="flex items-start gap-2">
           <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
           </svg>
-          <span><strong>Version control go.sum:</strong> Always commit <code class="bg-background-dark/50 px-1 rounded">go.sum</code> to ensure reproducible builds.</span>
+          <span><strong>Version control go.sum:</strong> Always commit <code class="text-primary px-1 rounded">go.sum</code> to ensure reproducible builds.</span>
         </li>
       </ul>
     </div>

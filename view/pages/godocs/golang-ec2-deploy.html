@@ -1,0 +1,484 @@
+{{define "content"}}
+<div class="max-w-5xl mx-auto">
+  <div class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight">Deploy Go App to AWS EC2 with Systemd</h1>
+    <p class="mt-3 text-lg text-foreground-muted-light dark:text-foreground-muted-dark">Complete guide to deploy and run your Go application as a systemd service</p>
+  </div>
+
+  <div class="mb-6 prose dark:prose-invert max-w-none">
+    <p class="text-base text-foreground-light/80 dark:text-foreground-dark/80">
+      This guide walks you through deploying your Go application to an AWS EC2 instance and running it as a systemd service. Systemd ensures your application starts automatically on boot, restarts on crashes, and can be easily managed.
+    </p>
+  </div>
+
+  <!-- Prerequisites -->
+  <div class="bg-blue-500/10 dark:bg-blue-500/20 rounded-xl border border-blue-500/20 p-6 mb-8">
+    <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+      <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span>Prerequisites</span>
+    </h3>
+    <ul class="space-y-2 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>AWS account with EC2 access</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>Go application ready to deploy</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>SSH access to EC2 instance</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>Basic knowledge of Linux commands</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+        1
+      </div>
+      <h2 class="text-2xl font-black">Launch EC2 Instance</h2>
+    </div>
+    
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Launch an EC2 instance using Amazon Linux 2 or Ubuntu Server. For this guide, we'll use Ubuntu.
+      </p>
+      <div class="bg-white/5 dark:bg-black/30 rounded-lg p-4 mb-4">
+        <h4 class="font-semibold mb-2 text-primary">AWS Console Steps:</h4>
+        <ol class="space-y-2 text-sm text-foreground-light/80 dark:text-foreground-dark/80 ml-4 list-decimal">
+          <li>Go to EC2 Dashboard → Launch Instance</li>
+          <li>Choose Ubuntu Server 22.04 LTS (or latest)</li>
+          <li>Select instance type (t2.micro for free tier, t3.small for production)</li>
+          <li>Configure security group: Open port 22 (SSH) and your app port (e.g., 8080)</li>
+          <li>Launch instance and download the key pair (.pem file)</li>
+        </ol>
+      </div>
+      <p class="mt-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Connect to your instance:
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto mt-3">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Set correct permissions for key file
+chmod 400 your-key.pem
+
+# SSH into the instance
+ssh -i your-key.pem ubuntu@YOUR_EC2_IP_ADDRESS</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+        2
+      </div>
+      <h2 class="text-2xl font-black">Install Go on EC2</h2>
+    </div>
+    
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Install Go on your EC2 instance:
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Update package list
+sudo apt update
+
+# Install Go (Ubuntu/Debian)
+sudo apt install golang-go -y
+
+# Verify installation
+go version
+
+# Set GOPATH and GOROOT (add to ~/.bashrc or ~/.profile)
+echo 'export GOPATH=$HOME/go' >> ~/.bashrc
+echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.bashrc
+source ~/.bashrc</code></pre>
+      </div>
+      <p class="mt-4 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">
+        <strong>Note:</strong> For latest Go version, download from <a href="https://golang.org/dl" class="text-primary hover:underline" target="_blank">golang.org/dl</a> and extract to <code class="bg-background-dark/50 px-1 rounded">/usr/local</code>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+        3
+      </div>
+      <h2 class="text-2xl font-black">Transfer Your Go Application</h2>
+    </div>
+    
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Copy your Go application to the EC2 instance. Option 1: Using SCP (from your local machine):
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># From your local machine, compress and transfer
+tar -czf app.tar.gz your-go-project/
+scp -i your-key.pem app.tar.gz ubuntu@YOUR_EC2_IP:/home/ubuntu/
+
+# SSH into EC2 and extract
+ssh -i your-key.pem ubuntu@YOUR_EC2_IP
+cd /home/ubuntu
+tar -xzf app.tar.gz
+cd your-go-project</code></pre>
+      </div>
+      <p class="mt-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Option 2: Clone from Git (if your code is in a repository):
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto mt-3">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># On EC2 instance
+cd /home/ubuntu
+git clone https://github.com/yourusername/your-go-project.git
+cd your-go-project</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+        4
+      </div>
+      <h2 class="text-2xl font-black">Build the Go Application</h2>
+    </div>
+    
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Build your Go application on the EC2 instance:
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Navigate to your project
+cd /home/ubuntu/your-go-project
+
+# Download dependencies
+go mod download
+
+# Build the application
+go build -o myapp cmd/server/main.go
+
+# Or build for production (optimized)
+go build -ldflags="-s -w" -o myapp cmd/server/main.go
+
+# Test if it runs
+./myapp</code></pre>
+      </div>
+      <p class="mt-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Create a directory for your application:
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto mt-3">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Create app directory
+sudo mkdir -p /opt/myapp
+sudo chown ubuntu:ubuntu /opt/myapp
+
+# Copy binary and config files
+cp myapp /opt/myapp/
+cp -r configs /opt/myapp/  # if you have config files
+
+# Make it executable
+sudo chmod +x /opt/myapp/myapp</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+        5
+      </div>
+      <h2 class="text-2xl font-black">Create Systemd Service File</h2>
+    </div>
+    
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Create a systemd service file to manage your application:
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Create service file
+sudo nano /etc/systemd/system/myapp.service</code></pre>
+      </div>
+      <p class="mt-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Add the following content (adjust paths and user as needed):
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto mt-3">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">[Unit]
+Description=My Go Application
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/myapp
+ExecStart=/opt/myapp/myapp
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Environment variables (optional)
+Environment="PORT=8080"
+Environment="ENV=production"
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+      </div>
+      <div class="mt-4 space-y-2 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">
+        <p><strong>Key settings explained:</strong></p>
+        <ul class="ml-4 list-disc space-y-1">
+          <li><code class="bg-background-dark/50 px-1 rounded">Restart=always</code> - Automatically restart on crash</li>
+          <li><code class="bg-background-dark/50 px-1 rounded">RestartSec=5</code> - Wait 5 seconds before restarting</li>
+          <li><code class="bg-background-dark/50 px-1 rounded">StandardOutput=journal</code> - Logs go to systemd journal</li>
+          <li><code class="bg-background-dark/50 px-1 rounded">User=ubuntu</code> - Run as ubuntu user (use non-root user)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 6 -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+        6
+      </div>
+      <h2 class="text-2xl font-black">Enable and Start the Service</h2>
+    </div>
+    
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        Reload systemd, enable, and start your service:
+      </p>
+      <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+        <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Reload systemd daemon
+sudo systemctl daemon-reload
+
+# Enable service to start on boot
+sudo systemctl enable myapp
+
+# Start the service
+sudo systemctl start myapp
+
+# Check service status
+sudo systemctl status myapp
+
+# View logs
+sudo journalctl -u myapp -f</code></pre>
+      </div>
+      <p class="mt-4 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">
+        The service should now be running. Test it by accessing <code class="bg-background-dark/50 px-1 rounded">http://YOUR_EC2_IP:8080</code>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 7 -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+        7
+      </div>
+      <h2 class="text-2xl font-black">Common Systemd Commands</h2>
+    </div>
+    
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold mb-2 text-primary">Service Management</h4>
+          <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-3 font-mono text-xs overflow-x-auto">
+            <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Start service
+sudo systemctl start myapp
+
+# Stop service
+sudo systemctl stop myapp
+
+# Restart service
+sudo systemctl restart myapp
+
+# Reload service (if supported)
+sudo systemctl reload myapp
+
+# Check status
+sudo systemctl status myapp</code></pre>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-2 text-primary">Logs and Debugging</h4>
+          <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-3 font-mono text-xs overflow-x-auto">
+            <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># View recent logs
+sudo journalctl -u myapp
+
+# Follow logs (like tail -f)
+sudo journalctl -u myapp -f
+
+# View last 100 lines
+sudo journalctl -u myapp -n 100
+
+# View logs since today
+sudo journalctl -u myapp --since today</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 8 -->
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+        8
+      </div>
+      <h2 class="text-2xl font-black">Security Best Practices</h2>
+    </div>
+    
+    <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+      <ul class="space-y-3 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Run as non-root user:</strong> Always set <code class="bg-background-dark/50 px-1 rounded">User=ubuntu</code> in the service file. Never run your app as root.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Firewall configuration:</strong> Only open necessary ports in EC2 security group. Use AWS Security Groups to restrict access.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Use environment variables:</strong> Store sensitive data (API keys, DB passwords) in environment variables, not in code.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Enable HTTPS:</strong> Use a reverse proxy like Nginx with Let's Encrypt certificates for HTTPS.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span><strong>Regular updates:</strong> Keep your EC2 instance and Go application updated with security patches.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Optional: Nginx Reverse Proxy -->
+  <div class="mb-8 bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6">
+    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+      </svg>
+      <span>Optional: Nginx Reverse Proxy</span>
+    </h3>
+    <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      Set up Nginx as a reverse proxy to serve your app on port 80/443 and handle SSL:
+    </p>
+    <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+      <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200"># Install Nginx
+sudo apt install nginx -y
+
+# Create Nginx config
+sudo nano /etc/nginx/sites-available/myapp
+
+# Add this configuration:
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+# Enable site
+sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/
+sudo nginx -t  # Test configuration
+sudo systemctl restart nginx</code></pre>
+    </div>
+  </div>
+
+  <!-- Troubleshooting -->
+  <div class="mb-8 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 dark:from-yellow-500/20 dark:to-orange-500/20 rounded-xl border border-yellow-500/20 p-6">
+    <h3 class="text-xl font-bold mb-4">Troubleshooting</h3>
+    <div class="space-y-3 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      <div>
+        <p class="font-semibold mb-1">Service fails to start:</p>
+        <ul class="ml-4 list-disc space-y-1">
+          <li>Check logs: <code class="bg-background-dark/50 px-1 rounded">sudo journalctl -u myapp -n 50</code></li>
+          <li>Verify binary path and permissions</li>
+          <li>Check if port is already in use: <code class="bg-background-dark/50 px-1 rounded">sudo netstat -tulpn | grep 8080</code></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold mb-1">Can't access from outside:</p>
+        <ul class="ml-4 list-disc space-y-1">
+          <li>Check EC2 Security Group - ensure port is open</li>
+          <li>Verify app is listening on 0.0.0.0, not just localhost</li>
+          <li>Check Ubuntu firewall: <code class="bg-background-dark/50 px-1 rounded">sudo ufw status</code></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold mb-1">Permission denied errors:</p>
+        <ul class="ml-4 list-disc space-y-1">
+          <li>Ensure user in service file has read/execute permissions</li>
+          <li>Check file ownership: <code class="bg-background-dark/50 px-1 rounded">ls -la /opt/myapp/</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="bg-gradient-to-br from-primary/10 to-blue-500/10 dark:from-primary/20 dark:to-blue-500/20 rounded-xl border border-primary/20 p-6">
+    <h3 class="text-xl font-bold mb-3">Quick Reference</h3>
+    <div class="grid md:grid-cols-2 gap-4 text-sm">
+      <div>
+        <p class="font-semibold mb-2 text-primary">Service File Location:</p>
+        <code class="bg-background-dark/50 px-2 py-1 rounded block">/etc/systemd/system/myapp.service</code>
+      </div>
+      <div>
+        <p class="font-semibold mb-2 text-primary">Application Directory:</p>
+        <code class="bg-background-dark/50 px-2 py-1 rounded block">/opt/myapp/</code>
+      </div>
+      <div>
+        <p class="font-semibold mb-2 text-primary">View Logs:</p>
+        <code class="bg-background-dark/50 px-2 py-1 rounded block">sudo journalctl -u myapp -f</code>
+      </div>
+      <div>
+        <p class="font-semibold mb-2 text-primary">Restart Service:</p>
+        <code class="bg-background-dark/50 px-2 py-1 rounded block">sudo systemctl restart myapp</code>
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}
+

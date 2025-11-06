@@ -1,0 +1,344 @@
+{{define "content"}}
+<div class="max-w-5xl mx-auto">
+  <div class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight">Understanding Go Packages</h1>
+    <p class="mt-3 text-lg text-foreground-muted-light dark:text-foreground-muted-dark">Learn how packages work in Go with simple examples</p>
+  </div>
+
+  <div class="mb-6 prose dark:prose-invert max-w-none">
+    <p class="text-base text-foreground-light/80 dark:text-foreground-dark/80">
+      Packages are the fundamental building blocks of Go programs. Every Go file belongs to a package, and packages help organize code into reusable, maintainable units. Understanding packages is crucial for writing clean and modular Go code.
+    </p>
+  </div>
+
+  <!-- What are Packages -->
+  <div class="bg-background-light dark:bg-background-dark rounded-xl border border-border-light dark:border-border-dark p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">What are Packages?</h2>
+    <div class="space-y-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      <p>
+        A package in Go is a collection of related Go source files in the same directory. Packages provide:
+      </p>
+      <ul class="space-y-2 ml-6 list-disc">
+        <li><strong class="text-primary">Code organization:</strong> Group related functionality together</li>
+        <li><strong class="text-primary">Reusability:</strong> Import and use code from other packages</li>
+        <li><strong class="text-primary">Namespace:</strong> Prevent naming conflicts</li>
+        <li><strong class="text-primary">Visibility control:</strong> Control what can be accessed from outside the package</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Package Declaration -->
+  <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6 mb-8">
+    <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+      </svg>
+      <span>Package Declaration</span>
+    </h3>
+    <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      Every Go file must start with a package declaration. The package name must match the directory name (with some exceptions).
+    </p>
+    <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+      <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}</code></pre>
+    </div>
+    <p class="mt-3 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">
+      The <code class="text-primary px-1 rounded">package</code> keyword declares which package this file belongs to.
+    </p>
+  </div>
+
+  <!-- Package Main -->
+  <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6 mb-8">
+    <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+      <span>The <code class="text-primary px-1 rounded">main</code> Package</span>
+    </h3>
+    <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      The <code class="text-primary px-1 rounded">main</code> package is special. It defines an executable program. A program must have exactly one <code class="text-primary px-1 rounded">main()</code> function in the main package.
+    </p>
+    <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+      <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("This is an executable program")
+    fmt.Println("You can run it with: go run main.go")
+}</code></pre>
+    </div>
+    <p class="mt-3 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">
+      <strong>Note:</strong> Other packages (not named "main") are library packages that cannot be executed directly.
+    </p>
+  </div>
+
+  <!-- Importing Packages -->
+  <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6 mb-8">
+    <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+      </svg>
+      <span>Importing Packages</span>
+    </h3>
+    <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      Use the <code class="text-primary px-1 rounded">import</code> statement to use code from other packages. Go provides many standard library packages, and you can also import your own packages.
+    </p>
+    
+    <div class="space-y-4">
+      <div>
+        <p class="mb-2 text-sm font-semibold text-primary">Single Import</p>
+        <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello from fmt package")
+}</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-2 text-sm font-semibold text-primary">Multiple Imports</p>
+        <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package main
+
+import (
+    "fmt"
+    "math"
+    "time"
+)
+
+func main() {
+    fmt.Println("Current time:", time.Now())
+    fmt.Println("Square root of 16:", math.Sqrt(16))
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Creating Custom Packages -->
+  <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6 mb-8">
+    <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+      </svg>
+      <span>Creating Your Own Packages</span>
+    </h3>
+    <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      You can create your own packages by organizing files in directories. Each directory is a package.
+    </p>
+    
+    <div class="space-y-4">
+      <div>
+        <p class="mb-2 text-sm font-semibold text-primary">Example: Create a <code class="text-primary px-1 rounded">calculator</code> package</p>
+        <p class="mb-2 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">File: <code class="text-primary px-1 rounded">calculator/calculator.go</code></p>
+        <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package calculator
+
+// Add adds two numbers
+func Add(a, b int) int {
+    return a + b
+}
+
+// Subtract subtracts b from a
+func Subtract(a, b int) int {
+    return a - b
+}
+
+// Multiply multiplies two numbers
+func Multiply(a, b int) int {
+    return a * b
+}</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-2 text-sm font-semibold text-primary">Using the package in main.go</p>
+        <p class="mb-2 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">File: <code class="text-primary px-1 rounded">main.go</code></p>
+        <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package main
+
+import (
+    "fmt"
+    "your-module/calculator"  // Import your package
+)
+
+func main() {
+    sum := calculator.Add(5, 3)
+    diff := calculator.Subtract(10, 4)
+    product := calculator.Multiply(2, 7)
+    
+    fmt.Println("Sum:", sum)        // Output: Sum: 8
+    fmt.Println("Difference:", diff)  // Output: Difference: 6
+    fmt.Println("Product:", product)  // Output: Product: 14
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Package Visibility -->
+  <div class="bg-white/5 dark:bg-black/20 rounded-xl border border-border-light dark:border-border-dark p-6 mb-8">
+    <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+      </svg>
+      <span>Package Visibility (Exported vs Unexported)</span>
+    </h3>
+    <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      In Go, visibility is controlled by the first letter of the identifier. Capitalized names are <strong class="text-primary">exported</strong> (public), lowercase names are <strong class="text-primary">unexported</strong> (private).
+    </p>
+    
+    <div class="space-y-4">
+      <div>
+        <p class="mb-2 text-sm font-semibold text-primary">Example showing exported and unexported functions</p>
+        <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package calculator
+
+// Add is exported (can be used from other packages)
+func Add(a, b int) int {
+    return a + b
+}
+
+// subtract is unexported (only usable within this package)
+func subtract(a, b int) int {
+    return a - b
+}
+
+// Helper is an exported helper function
+func Helper() {
+    // Can call unexported functions from same package
+    result := subtract(10, 5)
+    // Use result...
+}</code></pre>
+        </div>
+        <p class="mt-3 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">
+          <strong>Key point:</strong> From outside the package, you can only use <code class="text-primary px-1 rounded">Add()</code> and <code class="text-primary px-1 rounded">Helper()</code>. The <code class="text-primary px-1 rounded">subtract()</code> function is private to the package.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complete Example -->
+  <div class="bg-blue-500/10 dark:bg-blue-500/20 rounded-xl border border-blue-500/20 p-6 mb-8">
+    <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+      <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+      <span>Complete Working Example</span>
+    </h3>
+    <p class="mb-4 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      Here's a complete example showing how to create and use a custom package:
+    </p>
+    
+    <div class="space-y-4">
+      <div>
+        <p class="mb-2 text-sm font-semibold text-blue-400">Step 1: Create the package</p>
+        <p class="mb-2 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">File: <code class="text-primary px-1 rounded">greetings/greetings.go</code></p>
+        <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package greetings
+
+import "fmt"
+
+// Greet returns a greeting message
+func Greet(name string) string {
+    return fmt.Sprintf("Hello, %s! Welcome to Go!", name)
+}
+
+// GreetMultiple greets multiple people
+func GreetMultiple(names []string) {
+    for _, name := range names {
+        fmt.Println(Greet(name))
+    }
+}</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-2 text-sm font-semibold text-blue-400">Step 2: Use the package</p>
+        <p class="mb-2 text-xs text-foreground-muted-light dark:text-foreground-muted-dark">File: <code class="text-primary px-1 rounded">main.go</code></p>
+        <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">package main
+
+import (
+    "fmt"
+    "your-module/greetings"
+)
+
+func main() {
+    // Use the Greet function
+    message := greetings.Greet("Alice")
+    fmt.Println(message)
+    
+    // Use the GreetMultiple function
+    names := []string{"Bob", "Charlie", "Diana"}
+    greetings.GreetMultiple(names)
+}</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-2 text-sm font-semibold text-blue-400">Output:</p>
+        <div class="bg-gray-900 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+          <pre class="text-gray-100 dark:text-gray-200"><code class="text-gray-100 dark:text-gray-200">Hello, Alice! Welcome to Go!
+Hello, Bob! Welcome to Go!
+Hello, Charlie! Welcome to Go!
+Hello, Diana! Welcome to Go!</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="bg-green-500/10 dark:bg-green-500/20 rounded-xl border border-green-500/20 p-6 mb-8">
+    <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+      <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span>Key Takeaways</span>
+    </h3>
+    <ul class="space-y-2 text-sm text-foreground-light/80 dark:text-foreground-dark/80">
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>Every Go file belongs to a package</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>The <code class="text-primary px-1 rounded">main</code> package creates an executable program</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>Capitalized names are exported (public), lowercase are unexported (private)</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>Packages help organize code into reusable, maintainable units</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        <span>Import packages using the <code class="text-primary px-1 rounded">import</code> keyword</span>
+      </li>
+    </ul>
+  </div>
+</div>
+{{end}}
+

@@ -122,12 +122,22 @@ func main() {
 
 	// Golang project structure page
 	r.HandleFunc("/golang-project-structure", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "pages/golang-project-structure.html", nil)
+		render(w, "pages/godocs/golang-project-structure.html", nil)
 	})
 
 	// Golang create project tutorial page
 	r.HandleFunc("/golang-create-project", func(w http.ResponseWriter, _ *http.Request) {
-		render(w, "pages/golang-create-project.html", nil)
+		render(w, "pages/godocs/golang-create-project.html", nil)
+	})
+
+	// Golang EC2 deployment page
+	r.HandleFunc("/golang-ec2-deploy", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/godocs/golang-ec2-deploy.html", nil)
+	})
+
+	// Golang packages explanation page
+	r.HandleFunc("/golang-packages", func(w http.ResponseWriter, _ *http.Request) {
+		render(w, "pages/godocs/golang-packages.html", nil)
 	})
 
 	// Optional: if you want to expose server.html on /server
