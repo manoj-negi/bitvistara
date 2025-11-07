@@ -65,7 +65,7 @@ func main() {
 	r := mux.NewRouter()
 
 	// Basic Auth middleware (applies to all routes)
-	r.Use(authMiddleware)
+	//r.Use(authMiddleware)
 
 	// Static files under /public/
 	fileServer := http.FileServer(http.Dir("public"))
